@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Мое приложение</string>
+
+    <string name="welcome">Добро пожаловать в приложение ArnasEducation</string>
+    <string name="skip"><u>Пропустить</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
