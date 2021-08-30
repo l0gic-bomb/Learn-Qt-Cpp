@@ -1,4 +1,84 @@
 <resources>
     <string name="app_name">Мое приложение</string>
 
+    <string-array name="programming_languages">
+        <item>C++</item>
+        <item>C#</item>
+        <item>Java</item>
+        <item>JavaSciprt</item>
+        <item>Kotlin</item>
+        <item>Python</item>
+        <item>Ruby</item>
+        <item>Swift</item>
+        <item>TypeScript</item>
+        <item>VisualStudio</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+    </string-array>
+
+
+    <string-array name="levels">
+        <item>level_1</item>
+        <item>level_2</item>
+        <item>level_3</item>
+        <item>level_4</item>
+        <item>level_5</item>
+        <item>level_6</item>
+        <item>level_7</item>
+        <item>level_8</item>
+        <item>level_9</item>
+        <item>level_10</item>
+        <item>level_11</item>
+        <item>level_12</item>
+        <item>level_13</item>
+        <item>level_14</item>
+        <item>level_15</item>
+
+
+    </string-array>
+    <string-array name="cpp_junior">
+        <item>This is name level</item>
+        <item>This is name level</item>
+        <item>This is name level</item>
+        <item>This is name level</item>
+    </string-array>
+
+    <string-array name="cpp_junior_description">
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+        <item>This is random description</item>
+    </string-array>
+
+    <string-array name="cpp_middle">
+
+
+    </string-array>
+    <string-array name="cpp_senior">
+
+
+    </string-array>
+    <string-array name="qt_junior">
+
+
+    </string-array>
+    <string-array name="qt_middle">
+
+
+    </string-array>
+    <string-array name="qt_senior">
+
+
+    </string-array>
 </resources>

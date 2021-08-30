@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticeFragment">
-        <activity android:name=".DashBoard" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".QtActivity" />
+        <activity android:name=".CppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
