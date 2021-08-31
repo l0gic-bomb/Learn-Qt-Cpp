@@ -15,8 +15,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class CppActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
-//    ItemViewHolder _holders[];
     String names[], descs[];
+
     int images[] = {R.drawable.c_plus_plus, R.drawable.c_sharp, R.drawable.java,
             R.drawable.javascript, R.drawable.kotlin, R.drawable.python, R.drawable.ruby,
     R.drawable.swift, R.drawable.typescript, R.drawable.visualstudio};
@@ -27,15 +27,16 @@ public class CppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cpp);
 
-
-        fillHolder(getResources().getStringArray(R.array.programming_languages), getResources().getStringArray(R.array.description), images);
-
         recyclerView = findViewById(R.id.recycler_view_cpp);
 
+        names = getResources().getStringArray(R.array.programming_languages);
+        descs = getResources().getStringArray(R.array.description);
+
+
         // Задаем адаптер
-//        MainAdapter mainAdapter = new MainAdapter(this, /*_holders*/);
-//        recyclerView.setAdapter(mainAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MainAdapter mainAdapter = new MainAdapter(this, names, descs, images);
+        recyclerView.setAdapter(mainAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Задаем NavigationBar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
