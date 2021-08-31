@@ -32,9 +32,11 @@ public class CppActivity extends AppCompatActivity {
         names = getResources().getStringArray(R.array.programming_languages);
         descs = getResources().getStringArray(R.array.description);
 
+        // Временный тип для холдера Header
+        final String name_header = "Junior";
 
         // Задаем адаптер
-        MainAdapter mainAdapter = new MainAdapter(this, names, descs, images);
+        MainAdapter mainAdapter = new MainAdapter(this, names, descs, images, name_header);
         recyclerView.setAdapter(mainAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
