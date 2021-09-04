@@ -13,11 +13,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.practicefragment.models.DummyData;
-import com.example.practicefragment.models.LevelEvent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CppActivity extends AppCompatActivity {
@@ -34,25 +31,6 @@ public class CppActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cpp);
-
-
-        // Временный тип для холдера Header
-        final String junior = "Junior";
-        final String middle = "Middle";
-        final String senior = "Senior";
-
-
-
-
-
-//        _list = new ArrayList<>();
-
-//        _list.add(new LevelEvent(null, null, null, junior, LevelEvent.HEADER_TYPE));
-//        _list.add(new LevelEvent(_names, _descs, _images, null, LevelEvent.ITEM_TYPE));
-
-
-        // Задаем адаптер
-
 
         // Задаем NavigationBar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
