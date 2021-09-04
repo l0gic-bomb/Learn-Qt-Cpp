@@ -1,116 +1,82 @@
 <resources>
     <string name="app_name">Мое приложение</string>
 
-<!--    <string-array name="programming_languages">-->
-<!--        <item>C++</item>-->
-<!--        <item>C#</item>-->
-<!--        <item>Java</item>-->
-<!--        <item>JavaSciprt</item>-->
-<!--        <item>Kotlin</item>-->
-<!--        <item>Python</item>-->
-<!--        <item>Ruby</item>-->
-<!--        <item>Swift</item>-->
-<!--        <item>TypeScript</item>-->
-<!--        <item>VisualStudio</item>-->
-<!--    </string-array>-->
-
     <string-array name="name_level_junior">
-        <item>std::cout and std::cin</item>
-        <item>if and switch</item>
-        <item>cycles: for and while</item>
-        <item>pointers</item>
-        <item>Kotlin</item>
-        <item>Python</item>
-        <item>Ruby</item>
-        <item>Swift</item>
-        <item>TypeScript</item>
-        <item>VisualStudio</item>
+        <item>Операции ввода и вывода</item>
+        <item>Ветвления и переключатели</item>
+        <item>Массивы</item>
+        <item>Циклы</item>
+        <item>Указатели</item>
+        <item>Классы</item>
+        <item>Инкапсуляция</item>
+        <item>Наследование </item>
+        <item>Полиморфизм</item>
+        <item>Виртуальные функции</item>
     </string-array>
 
     <string-array name="junior_description">
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
+        <item>Ввод и вывод информации в консоль</item>
+        <item>Задаем множественный выбор</item>
+        <item>Учимся работать с массивами</item>
+        <item>Проходим по элементам в определенном порядке</item>
+        <item>Работаем с указателями</item>
+        <item>Знакомимся с основами ООП</item>
+        <item>Защищаем и связаыем данные в классе, представляя при этом открытый интерфейс</item>
+        <item>Учимся задать иеррархии классов</item>
+        <item>Производим различные действия ссылаясь на различные действия</item>
+        <item>Углубляемся в полимфоризм</item>
     </string-array>
 
     <string-array name="name_level_middle">
-        <item>std::cout and std::cin</item>
-        <item>if and switch</item>
-        <item>cycles: for and while</item>
-        <item>pointers</item>
-        <item>Kotlin</item>
-        <item>Python</item>
-        <item>Ruby</item>
-        <item>Swift</item>
-        <item>TypeScript</item>
-        <item>VisualStudio</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
     </string-array>
 
     <string-array name="middle_description">
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
     </string-array>
 
     <string-array name="name_level_senior">
-        <item>std::cout and std::cin</item>
-        <item>if and switch</item>
-        <item>cycles: for and while</item>
-        <item>pointers</item>
-        <item>Kotlin</item>
-        <item>Python</item>
-        <item>Ruby</item>
-        <item>Swift</item>
-        <item>TypeScript</item>
-        <item>VisualStudio</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
     </string-array>
 
     <string-array name="senior_description">
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
-        <item>This is random description</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
     </string-array>
-
-
-<!--    <string-array name="levels">-->
-<!--        <item>level_1</item>-->
-<!--        <item>level_2</item>-->
-<!--        <item>level_3</item>-->
-<!--        <item>level_4</item>-->
-<!--        <item>level_5</item>-->
-<!--        <item>level_6</item>-->
-<!--        <item>level_7</item>-->
-<!--        <item>level_8</item>-->
-<!--        <item>level_9</item>-->
-<!--        <item>level_10</item>-->
-<!--        <item>level_11</item>-->
-<!--        <item>level_12</item>-->
-<!--        <item>level_13</item>-->
-<!--        <item>level_14</item>-->
-<!--        <item>level_15</item>-->
-<!--    </string-array>-->
-
-
 
 </resources>

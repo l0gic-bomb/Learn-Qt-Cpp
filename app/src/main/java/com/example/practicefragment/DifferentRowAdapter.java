@@ -1,10 +1,14 @@
 package com.example.practicefragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practicefragment.models.LevelEvent;
@@ -17,9 +21,11 @@ import static com.example.practicefragment.models.LevelEvent.ITEM_TYPE;
 public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<LevelEvent> _list;
+    private Context context;
 
-    public DifferentRowAdapter(List<LevelEvent> list) {
+    public DifferentRowAdapter(List<LevelEvent> list, Context ct) {
         this._list = list;
+        this.context = ct;
     }
 
     @Override
@@ -48,6 +54,15 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case ITEM_TYPE:
                     ((EventViewHolder) holder).mTitle.setText(object.get_name());
                     ((EventViewHolder) holder).mDescription.setText(object.get_description());
+                    ((EventViewHolder)holder).linearLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, LevelActivity.class);
+                            intent.putExtra("nameLevel", object.get_name());
+                            intent.putExtra( "description", object.get_description());
+                            context.startActivity(intent);
+                        }
+                    });
                     break;
             }
         }
@@ -83,11 +98,13 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public static class EventViewHolder extends RecyclerView.ViewHolder {
         private TextView mTitle;
         private TextView mDescription;
+        LinearLayout linearLayout;
 
         public EventViewHolder(View itemView) {
             super(itemView);
             mTitle = (TextView) itemView.findViewById(R.id.titleTextView);
             mDescription = (TextView) itemView.findViewById(R.id.descriptionTextView);
+            linearLayout = (LinearLayout)itemView.findViewById(R.id.mainLinearLayuot);
         }
     }
 }

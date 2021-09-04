@@ -76,7 +76,7 @@ public class CppActivity extends AppCompatActivity {
         dummyData.setListData(_nameLevel, _names, _descs);
 
 
-        DifferentRowAdapter adapter = new DifferentRowAdapter(dummyData.getData());
+        DifferentRowAdapter adapter = new DifferentRowAdapter(dummyData.getData(), this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_cpp);

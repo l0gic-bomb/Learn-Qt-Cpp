@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="32dp"
-    android:paddingBottom="12dp">
+    android:paddingBottom="12dp"
+    android:id="@+id/mainLinearLayuot">
 
     <TextView
         android:id="@+id/titleTextView"
