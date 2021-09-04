@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.practicefragment.models.DummyData;
 import com.example.practicefragment.models.LevelEvent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,7 +23,7 @@ import java.util.List;
 public class CppActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
-    String _names[], _descs[];
+
     int _images[] = {R.drawable.c_plus_plus, R.drawable.c_sharp, R.drawable.java,
             R.drawable.javascript, R.drawable.kotlin, R.drawable.python, R.drawable.ruby,
     R.drawable.swift, R.drawable.typescript, R.drawable.visualstudio};
@@ -40,56 +41,69 @@ public class CppActivity extends AppCompatActivity {
         final String middle = "Middle";
         final String senior = "Senior";
 
-        _names = getResources().getStringArray(R.array.programming_languages);
-        _descs = getResources().getStringArray(R.array.description);
 
-        _list = new ArrayList<>();
 
-        _list.add(new LevelEvent(null, null, null, junior, LevelEvent.HEADER_TYPE));
-        _list.add(new LevelEvent(_names, _descs, _images, null, LevelEvent.ITEM_TYPE));
+
+
+//        _list = new ArrayList<>();
+
+//        _list.add(new LevelEvent(null, null, null, junior, LevelEvent.HEADER_TYPE));
+//        _list.add(new LevelEvent(_names, _descs, _images, null, LevelEvent.ITEM_TYPE));
 
 
         // Задаем адаптер
 
 
         // Задаем NavigationBar
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setSelectedItemId(R.id.cpp);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.cpp:
-//                        return true;
-//                    case R.id.qt:
-//                        startActivity(new Intent(getApplicationContext(), QtActivity.class));
-//                        overridePendingTransition(0, 0);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.cpp);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.cpp:
+                        return true;
+                    case R.id.qt:
+                        startActivity(new Intent(getApplicationContext(), QtActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        _names = getResources().getStringArray(R.array.programming_languages);
-        _descs = getResources().getStringArray(R.array.description);
 
-        _list = new ArrayList<>();
+        String _names[], _descs[];
+        String _nameLevel;
 
-        _list.add(new LevelEvent(null, null, null, "Junior", LevelEvent.HEADER_TYPE));
-        _list.add(new LevelEvent(_names, _descs, _images, null, LevelEvent.ITEM_TYPE));
+        DummyData dummyData = new DummyData();
 
-        MainAdapter mainAdapter = new MainAdapter(_list);
+        _nameLevel = "JUNIOR";
+        _names = getResources().getStringArray(R.array.name_level_junior);
+        _descs = getResources().getStringArray(R.array.junior_description);
+        dummyData.setListData(_nameLevel, _names, _descs);
 
-        recyclerView = findViewById(R.id.recycler_view_cpp);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
-        recyclerView.setAdapter(mainAdapter);
+        _nameLevel = "MIDDLE";
+        _names = getResources().getStringArray(R.array.name_level_middle);
+        _descs = getResources().getStringArray(R.array.middle_description);
+        dummyData.setListData(_nameLevel, _names, _descs);
+
+        _nameLevel = "SENIOR";
+        _names = getResources().getStringArray(R.array.name_level_senior);
+        _descs = getResources().getStringArray(R.array.senior_description);
+        dummyData.setListData(_nameLevel, _names, _descs);
 
 
+        DifferentRowAdapter adapter = new DifferentRowAdapter(dummyData.getData());
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_cpp);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(adapter);
     }
 }
