@@ -20,19 +20,23 @@ public class LevelActivity extends AppCompatActivity {
 
         _name = findViewById(R.id.nameLevel);
         _description = findViewById(R.id.description);
+
+        getData();
+        setData();
     }
 
     private void getData() {
         if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("description")) {
-            _name.setText(getIntent().getStringExtra("nameLevel"));
-            _description.setText(getIntent().getStringExtra("description"));
+            _strName = getIntent().getStringExtra("nameLevel");
+            _strDesc = getIntent().getStringExtra("description");
         } else {
             Toast.makeText(this, "NoData", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void setData() {
-
+        _name.setText(_strName);
+        _description.setText(_strDesc);
     }
 
 }
