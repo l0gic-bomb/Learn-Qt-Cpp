@@ -9,6 +9,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Класс для работы с уровнями Qt,
+ * представляет из себя переход между уровнями
+ * снизу navigationBar для перехода между уровнями С++ и Qt
+ */
+
 public class QtActivity extends AppCompatActivity {
 
     @Override

@@ -3,7 +3,7 @@ package com.example.practicefragment.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyData {
+public class RecyclerDataModel {
 
     private List<LevelEvent> _listData;
 
@@ -12,7 +12,7 @@ public class DummyData {
         return _listData;
     }
 
-    public DummyData() {
+    public RecyclerDataModel() {
         _listData = new ArrayList<>();
     }
 
