@@ -82,16 +82,16 @@
 
     <!--qt -->
     <string-array name="qt_name_level_junior">
-        <item>Операции ввода и вывода</item>
-        <item>Ветвления и переключатели</item>
-        <item>Массивы</item>
-        <item>Циклы</item>
-        <item>Указатели</item>
-        <item>Классы</item>
-        <item>Инкапсуляция</item>
-        <item>Наследование </item>
-        <item>Полиморфизм</item>
-        <item>Виртуальные функции</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
+        <item>неизвестно</item>
     </string-array>
 
     <string-array name="qt_junior_description">
