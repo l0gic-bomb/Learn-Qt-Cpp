@@ -1,2 +1,2 @@
-# ArtnasEducation
-In this repository is place for ArtnasEducation. ArtnasEducation is application for studying Framework Qt and C++
+# Learn-Qt-Cpp
+In this repository is place for Learn-Qt-Cpp. Learn-Qt-Cpp is application for studying Framework Qt and C++
