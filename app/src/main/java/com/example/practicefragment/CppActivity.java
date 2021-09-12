@@ -70,7 +70,6 @@ public class CppActivity extends AppCompatActivity {
         String _nameLevel;
         String _names[], _descs[];
 
-
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
 
         _nameLevel = "JUNIOR";
