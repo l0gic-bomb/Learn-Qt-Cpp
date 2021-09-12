@@ -2,15 +2,6 @@
 /* Table: levels                                                */
 /*==============================================================*/
 
-CREATE TABLE "levels" (
-	"uid"	INTEGER,
-	"name_level"	TEXT,
-	"prog_level_id"	INTEGER,
-	"description"	TEXT,
-	"done"	BLOB,
-	PRIMARY KEY("uid" AUTOINCREMENT)
-);
-
 INSERT OR REPLACE INTO levels VALUES (1, "Операции ввода/вывода", 1, "Научимся выводить текст в консоль", false)
 INSERT OR REPLACE INTO levels VALUES (2, "Циклы", 1, "Делаем операции несколько раз", false)
 INSERT OR REPLACE INTO levels VALUES (3, "Ветвления и переключатели", 1, "Выбираем из нескольких вариантов", false)
