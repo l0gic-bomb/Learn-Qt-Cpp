@@ -1,4 +1,4 @@
-package com.example.practicefragment;
+package com.example.practicefragment.screens;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.practicefragment.DifferentRowAdapter;
+import com.example.practicefragment.R;
 import com.example.practicefragment.models.RecyclerDataModel;
+import com.example.practicefragment.screens.CppActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
