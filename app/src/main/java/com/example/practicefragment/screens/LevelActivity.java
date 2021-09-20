@@ -1,4 +1,4 @@
-package com.example.practicefragment;
+package com.example.practicefragment.screens;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.practicefragment.R;
 
 public class LevelActivity extends AppCompatActivity {
 

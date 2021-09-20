@@ -1,8 +1,12 @@
-package com.example.practicefragment;
+package com.example.practicefragment.screens;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -12,8 +16,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.practicefragment.DifferentRowAdapter;
+import com.example.practicefragment.R;
+import com.example.practicefragment.entity.Levels;
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 /**
  * Класс для работы с уровнями С++,
@@ -72,7 +81,20 @@ public class CppActivity extends AppCompatActivity {
 
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
 
+//        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+//        LiveData<List<Levels>> listLiveData = mainViewModel.getLevelsLiveData();
+
+
         _nameLevel = "JUNIOR";
+
+//        final int SIZE_LIST = listLiveData.getValue().size();
+//        String tmpArrayNames[] = new String[SIZE_LIST];
+//        String tmpArrayDesc[] = new String[SIZE_LIST];
+//        for (int i = 0; i < listLiveData.getValue().size(); ++i) {
+//            tmpArrayNames[i] = listLiveData.getValue().get(i).name_level;
+//            tmpArrayDesc[i] = listLiveData.getValue().get(i).description;
+//        }
+
         _names = getResources().getStringArray(R.array.name_level_junior);
         _descs = getResources().getStringArray(R.array.junior_description);
         recyclerDataModel.setListData(_nameLevel, _names, _descs);
