@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,16 +19,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 /**
  * Класс для работы с уровнями С++,
  * представляет из себя переход между уровнями
- * снизу navigationBar для перехода между уровнями С++ и Qt
+ * снизу navigationBar для перехода между окнами приложения
  */
 
 public class CppActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-
-    // Картинки уровней
-    int _images[] = {R.drawable.c_plus_plus, R.drawable.c_sharp, R.drawable.java,
-            R.drawable.javascript, R.drawable.kotlin, R.drawable.python, R.drawable.ruby,
-    R.drawable.swift, R.drawable.typescript, R.drawable.visualstudio};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +82,6 @@ public class CppActivity extends AppCompatActivity {
         _names = getResources().getStringArray(R.array.name_level_senior);
         _descs = getResources().getStringArray(R.array.senior_description);
         recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
 
         DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);
 

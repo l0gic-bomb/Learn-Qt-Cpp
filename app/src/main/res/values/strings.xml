@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Мое приложение</string>
+    <string name="app_name">LearnQtCpp</string>
 
-    <!--cpp -->
+    <!--CPP -->
+    <!--junior-cpp -->
     <string-array name="name_level_junior">
         <item>Операции ввода и вывода</item>
         <item>Ветвления и переключатели</item>
@@ -28,6 +29,7 @@
         <item>Углубляемся в полимфоризм</item>
     </string-array>
 
+    <!--middle-cpp -->
     <string-array name="name_level_middle">
         <item>неизвестно</item>
         <item>неизвестно</item>
@@ -54,6 +56,7 @@
         <item>неизвестно</item>
     </string-array>
 
+    <!--senior-cpp -->
     <string-array name="name_level_senior">
         <item>неизвестно</item>
         <item>неизвестно</item>
@@ -80,7 +83,8 @@
         <item>неизвестно</item>
     </string-array>
 
-    <!--qt -->
+    <!--QT -->
+    <!--junior-qt -->
     <string-array name="qt_name_level_junior">
         <item>неизвестно</item>
         <item>неизвестно</item>
@@ -107,6 +111,7 @@
         <item>Углубляемся в полимфоризм</item>
     </string-array>
 
+    <!--middle-qt -->
     <string-array name="qt_name_level_middle">
         <item>неизвестно</item>
         <item>неизвестно</item>
@@ -133,6 +138,7 @@
         <item>неизвестно</item>
     </string-array>
 
+    <!--senior-qt -->
     <string-array name="qt_name_level_senior">
         <item>неизвестно</item>
         <item>неизвестно</item>
