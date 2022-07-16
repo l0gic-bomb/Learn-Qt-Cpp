@@ -28,6 +28,7 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.context = ct;
     }
 
+    // standart apadter's methods
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
@@ -106,5 +107,6 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             mDescription = (TextView) itemView.findViewById(R.id.descriptionTextView);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.mainLinearLayuot);
         }
+
     }
 }
