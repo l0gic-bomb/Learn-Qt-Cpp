@@ -30,16 +30,20 @@ public class QtActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qt);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.qt);
+        bottomNavigationView.setSelectedItemId(R.id.qt_id);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.cpp:
+                    case R.id.cpp_id:
                         startActivity(new Intent(getApplicationContext(), CppActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
-                    case R.id.qt:
+                    case R.id.qt_id:
+                        return true;
+                    case R.id.profile_id:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;

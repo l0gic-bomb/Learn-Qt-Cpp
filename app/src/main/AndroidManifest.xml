@@ -8,6 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticeFragment">
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".QtActivity" />
         <activity android:name=".CppActivity">
             <intent-filter>
@@ -16,10 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LevelActivity"
-            android:label="Details"
-            />
-        
+        <activity
+            android:name=".LevelActivity"
+            android:label="Details" />
     </application>
 
 </manifest>

@@ -32,15 +32,19 @@ public class CppActivity extends AppCompatActivity {
 
         // Задаем NavigationBar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.cpp);
+        bottomNavigationView.setSelectedItemId(R.id.cpp_id);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.cpp:
+                    case R.id.cpp_id:
                         return true;
-                    case R.id.qt:
+                    case R.id.qt_id:
                         startActivity(new Intent(getApplicationContext(), QtActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.profile_id:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }
