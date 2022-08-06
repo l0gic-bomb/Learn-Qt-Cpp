@@ -5,18 +5,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Window;
 
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.net.URL;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
  * Класс для работы с уровнями С++,
@@ -72,6 +74,18 @@ public class CppActivity extends AppCompatActivity {
         String _nameLevel;
         String _names[], _descs[];
 
+        AssetManager am = getAssets();
+        InputStream is = null;
+        String result;
+        try {
+            is = am.open("/windows/cpp.json");
+            Scanner s = new Scanner(is).useDelimiter("\\windows\\cpp.json");
+            result = s.hasNext() ? s.next() : "";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
 
         _nameLevel = "JUNIOR";
@@ -97,4 +111,5 @@ public class CppActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
     }
+
 }
