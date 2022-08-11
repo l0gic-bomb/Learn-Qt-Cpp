@@ -1,5 +1,7 @@
 package com.example.practicefragment;
 
+import static com.example.practicefragment.utility.ContentReaderJson.getReaderJson;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -9,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONException;
 
 /**
  * Класс для работы с уровнями Qt,
@@ -65,26 +70,17 @@ public class QtActivity extends AppCompatActivity {
          *  ...
          */
 
-        String _nameLevel;
-        String _names[], _descs[];
-
+        if (!getReaderJson().getDataFromFile("windows/qt.json", this))
+        {
+            Log.e("error-json", "you can't create JSONObject");
+        }
 
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
-
-        _nameLevel = "JUNIOR";
-        _names = getResources().getStringArray(R.array.qt_name_level_junior);
-        _descs = getResources().getStringArray(R.array.qt_junior_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
-        _nameLevel = "MIDDLE";
-        _names = getResources().getStringArray(R.array.qt_name_level_middle);
-        _descs = getResources().getStringArray(R.array.qt_middle_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
-        _nameLevel = "SENIOR";
-        _names = getResources().getStringArray(R.array.qt_name_level_senior);
-        _descs = getResources().getStringArray(R.array.qt_senior_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
+        try {
+            recyclerDataModel = getReaderJson().getGeneralDataLevels();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);

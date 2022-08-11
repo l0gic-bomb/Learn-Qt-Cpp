@@ -1,5 +1,7 @@
 package com.example.practicefragment;
 
+import static com.example.practicefragment.utility.ContentReaderJson.getReaderJson;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,8 @@ import android.view.MenuItem;
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.example.practicefragment.utility.ContentReaderJson;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONException;
 
 
 /**
@@ -68,31 +72,17 @@ public class CppActivity extends AppCompatActivity {
          *  ...
          */
 
-        if (!ContentReaderJson.getReaderJson().getDataFromFile("windows/cpp.json", this))
+        if (!getReaderJson().getDataFromFile("windows/cpp.json", this))
         {
             Log.e("error-json", "you can't create JSONObject");
         }
 
-        String _nameLevel;
-        String _names[], _descs[];
-
-
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
-
-        _nameLevel = "JUNIOR";
-        _names = getResources().getStringArray(R.array.name_level_junior);
-        _descs = getResources().getStringArray(R.array.junior_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
-        _nameLevel = "MIDDLE";
-        _names = getResources().getStringArray(R.array.name_level_middle);
-        _descs = getResources().getStringArray(R.array.middle_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
-        _nameLevel = "SENIOR";
-        _names = getResources().getStringArray(R.array.name_level_senior);
-        _descs = getResources().getStringArray(R.array.senior_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
+        try {
+            recyclerDataModel = getReaderJson().getGeneralDataLevels();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);
 

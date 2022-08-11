@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.practicefragment.models.RecyclerDataModel;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,15 +57,31 @@ public class ContentReaderJson {
 
 
     //! get DataModel for every levels by key
-    public RecyclerDataModel getGeneralDataLevels(String key)
-    {
-        if (object != null)
+    public RecyclerDataModel getGeneralDataLevels() throws JSONException {
+        if (object == null)
             return null;
 
-        return new RecyclerDataModel();
+        RecyclerDataModel model = new RecyclerDataModel();
+        getTmpModel("JUNIOR", model);
+        getTmpModel("MIDDLE", model);
+        getTmpModel("SENIOR", model);
+
+        return model;
     }
 
+    private void getTmpModel(String level, RecyclerDataModel model) throws JSONException
+    {
+        JSONArray data = object.getJSONArray(level);
 
+        String[] names = new String[data.length()];
+        String[] descs = new String[data.length()];
 
+        for (int i = 0; i < data.length(); ++i) {
+            JSONObject tmpJsonObj = data.getJSONObject(i);
+            names[i] = tmpJsonObj.getString("header");
+            descs[i] = tmpJsonObj.getString("desc");
+        }
 
+        model.setListData(level, names, descs);
+    }
 }
