@@ -74,7 +74,7 @@ public class CppActivity extends AppCompatActivity {
 
         if (!getReaderJson().getDataFromFile("windows/cpp.json", this))
         {
-            Log.e("error-json", "you can't create JSONObject");
+            Log.e("error-json", String.valueOf(R.string.json_error));
         }
 
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();

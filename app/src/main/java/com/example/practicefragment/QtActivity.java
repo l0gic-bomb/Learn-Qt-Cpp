@@ -20,11 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 
-/**
- * Класс для работы с уровнями Qt,
- * представляет из себя переход между уровнями
- * снизу navigationBar для перехода между уровнями С++ и Qt
- */
 
 public class QtActivity extends AppCompatActivity {
 
@@ -60,19 +55,9 @@ public class QtActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        /**
-         * RecyclerView состоит следующим образом
-         *  название уровня 1
-         *  1. уровень
-         *  ...
-         *  n. уровень
-         *  название уровня 2
-         *  ...
-         */
-
         if (!getReaderJson().getDataFromFile("windows/qt.json", this))
         {
-            Log.e("error-json", "you can't create JSONObject");
+            Log.e("error-json", String.valueOf(R.string.json_error));
         }
 
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
