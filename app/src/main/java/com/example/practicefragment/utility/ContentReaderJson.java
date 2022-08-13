@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class ContentReaderJson {
+
     private static ContentReaderJson readerJson;
     private JSONObject object;
 
@@ -83,5 +84,26 @@ public class ContentReaderJson {
         }
 
         model.setListData(level, names, descs);
+        model.setType(getType(level), model.getSize());
+    }
+
+    private int getType(String level)
+    {
+        int result;
+        switch (level)
+        {
+            case "JUNIOR" :
+                result = 0;
+                break;
+            case "MIDDLE" :
+                result = 1;
+                break;
+            case "SENIOR" :
+                result = 2;
+                break;
+            default:
+                return 999;
+        }
+        return result;
     }
 }

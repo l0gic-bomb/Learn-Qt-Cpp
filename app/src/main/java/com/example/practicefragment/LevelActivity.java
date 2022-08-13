@@ -1,5 +1,6 @@
 package com.example.practicefragment;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
@@ -8,10 +9,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.practicefragment.utility.ContentReaderJson;
+
+import java.net.URI;
+
 public class LevelActivity extends AppCompatActivity {
 
     TextView tvNameLevel;
     String nameLevel;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,8 +31,11 @@ public class LevelActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        if (getIntent().hasExtra("nameLevel")) {
+        if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("typeLevel")) {
             nameLevel = getIntent().getStringExtra("nameLevel");
+            String path = "levels/ru/" + getIntent().getStringExtra("typeAcitvity")
+                    + "/" + getIntent().getStringExtra("typeLevel") + "/";
+            //ContentReaderJson.getReaderJson().getDataFromFile(path,this);
         } else {
             Toast.makeText(this, R.string.no_level_data, Toast.LENGTH_SHORT).show();
         }

@@ -62,7 +62,7 @@ public class QtActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        recyclerDataModel.setModel(RecyclerDataModel.typeModel.QT_MODEL);
 
         DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);
 

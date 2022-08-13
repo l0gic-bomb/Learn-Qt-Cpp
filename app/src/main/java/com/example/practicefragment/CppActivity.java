@@ -83,6 +83,7 @@ public class CppActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        recyclerDataModel.setModel(RecyclerDataModel.typeModel.CPP_MODEL);
 
         DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);
 
