@@ -10,34 +10,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LevelActivity extends AppCompatActivity {
 
-    TextView _name, _description;
-    String _strName, _strDesc;
+    TextView tvNameLevel;
+    String nameLevel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_level);
 
-        _name = findViewById(R.id.nameLevel);
-        _description = findViewById(R.id.description);
+        tvNameLevel = findViewById(R.id.nameLevel);
 
         getData();
         setData();
     }
 
     private void getData() {
-        if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("description")) {
-            _strName = getIntent().getStringExtra("nameLevel");
-            _strDesc = getIntent().getStringExtra("description");
+        if (getIntent().hasExtra("nameLevel")) {
+            nameLevel = getIntent().getStringExtra("nameLevel");
         } else {
-            Toast.makeText(this, "NoData", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_level_data, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void setData() {
-        _name.setText(_strName);
-        _description.setText(_strDesc);
+        tvNameLevel.setText(nameLevel);
     }
 
 }
