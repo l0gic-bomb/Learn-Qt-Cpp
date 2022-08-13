@@ -1,42 +1,34 @@
-package com.example.practicefragment.screens;
+package com.example.practicefragment;
+
+import static com.example.practicefragment.utility.ContentReaderJson.getReaderJson;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.practicefragment.DifferentRowAdapter;
-import com.example.practicefragment.R;
-import com.example.practicefragment.entity.Levels;
 import com.example.practicefragment.models.RecyclerDataModel;
+import com.example.practicefragment.utility.ContentReaderJson;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
+import org.json.JSONException;
+
 
 /**
  * Класс для работы с уровнями С++,
  * представляет из себя переход между уровнями
- * снизу navigationBar для перехода между уровнями С++ и Qt
+ * снизу navigationBar для перехода между окнами приложения
  */
 
 public class CppActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-
-    // Картинки уровней
-    int _images[] = {R.drawable.c_plus_plus, R.drawable.c_sharp, R.drawable.java,
-            R.drawable.javascript, R.drawable.kotlin, R.drawable.python, R.drawable.ruby,
-    R.drawable.swift, R.drawable.typescript, R.drawable.visualstudio};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,15 +37,19 @@ public class CppActivity extends AppCompatActivity {
 
         // Задаем NavigationBar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.cpp);
+        bottomNavigationView.setSelectedItemId(R.id.cpp_id);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.cpp:
+                    case R.id.cpp_id:
                         return true;
-                    case R.id.qt:
+                    case R.id.qt_id:
                         startActivity(new Intent(getApplicationContext(), QtActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.profile_id:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }
@@ -76,46 +72,26 @@ public class CppActivity extends AppCompatActivity {
          *  ...
          */
 
-        String _nameLevel;
-        String _names[], _descs[];
+        if (!getReaderJson().getDataFromFile("windows/cpp.json", this))
+        {
+            Log.e("error-json", String.valueOf(R.string.json_error));
+        }
 
         RecyclerDataModel recyclerDataModel = new RecyclerDataModel();
-
-//        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-//        LiveData<List<Levels>> listLiveData = mainViewModel.getLevelsLiveData();
-
-
-        _nameLevel = "JUNIOR";
-
-//        final int SIZE_LIST = listLiveData.getValue().size();
-//        String tmpArrayNames[] = new String[SIZE_LIST];
-//        String tmpArrayDesc[] = new String[SIZE_LIST];
-//        for (int i = 0; i < listLiveData.getValue().size(); ++i) {
-//            tmpArrayNames[i] = listLiveData.getValue().get(i).name_level;
-//            tmpArrayDesc[i] = listLiveData.getValue().get(i).description;
-//        }
-
-        _names = getResources().getStringArray(R.array.name_level_junior);
-        _descs = getResources().getStringArray(R.array.junior_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
-        _nameLevel = "MIDDLE";
-        _names = getResources().getStringArray(R.array.name_level_middle);
-        _descs = getResources().getStringArray(R.array.middle_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
-        _nameLevel = "SENIOR";
-        _names = getResources().getStringArray(R.array.name_level_senior);
-        _descs = getResources().getStringArray(R.array.senior_description);
-        recyclerDataModel.setListData(_nameLevel, _names, _descs);
-
+        try {
+            recyclerDataModel = getReaderJson().getGeneralDataLevels();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        recyclerDataModel.setModel(RecyclerDataModel.typeModel.CPP_MODEL);
 
         DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_cpp);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
     }
+
 }

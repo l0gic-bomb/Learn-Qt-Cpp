@@ -18,6 +18,11 @@ import java.util.List;
 import static com.example.practicefragment.models.LevelEvent.HEADER_TYPE;
 import static com.example.practicefragment.models.LevelEvent.ITEM_TYPE;
 
+/**
+ * Класс для адаптер между списоком уровне
+ * и конкретным уровнем
+ */
+
 public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<LevelEvent> _list;
@@ -28,10 +33,10 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.context = ct;
     }
 
+    // standart apadter's methods
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-
         switch (viewType) {
             case HEADER_TYPE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_header, parent, false);
@@ -54,12 +59,13 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case ITEM_TYPE:
                     ((EventViewHolder) holder).mTitle.setText(object.get_name());
                     ((EventViewHolder) holder).mDescription.setText(object.get_description());
-                    ((EventViewHolder)holder).linearLayout.setOnClickListener(new View.OnClickListener() {
+                    ((EventViewHolder)holder).linearLayout.setOnClickListener(new View.OnClickListener()
+                    {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(context, LevelActivity.class);
                             intent.putExtra("nameLevel", object.get_name());
-                            intent.putExtra( "description", object.get_description());
+                            intent.putExtra("typeLevel", object.getTypeLevel());
                             context.startActivity(intent);
                         }
                     });
@@ -68,6 +74,7 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
+    // get count item
     @Override
     public int getItemCount() {
         if (_list == null)
@@ -86,6 +93,9 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return 0;
     }
 
+
+    // holders cpp_activity/qt_activity
+    // class for header
     public static class CityViewHolder extends RecyclerView.ViewHolder {
         private TextView _titleHeader;
 
@@ -95,6 +105,7 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
+    // class for item in lists
     public static class EventViewHolder extends RecyclerView.ViewHolder {
         private TextView mTitle;
         private TextView mDescription;
@@ -106,5 +117,6 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             mDescription = (TextView) itemView.findViewById(R.id.descriptionTextView);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.mainLinearLayuot);
         }
+
     }
 }

@@ -28,7 +28,7 @@ CREATE TABLE "levels" (
 /* Table: parts_levels                                          */
 /*==============================================================*/
 
-CREATE TABLE "parts_levels" (
+CREATE TABLE "parts_level" (
 	"uid"	         INTEGER,
 	"levels_id"	     INTEGER,
 	"type_level_id"	 INTEGER,
