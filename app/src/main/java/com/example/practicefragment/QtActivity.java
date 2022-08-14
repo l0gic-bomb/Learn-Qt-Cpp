@@ -51,7 +51,7 @@ public class QtActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if (!getReaderJson().getDataFromFile("windows/qt.json", this))
+        if (!getReaderJson().getDataAboutLevels("windows/qt.json", this))
         {
             Log.e("error-json", String.valueOf(R.string.json_error));
         }

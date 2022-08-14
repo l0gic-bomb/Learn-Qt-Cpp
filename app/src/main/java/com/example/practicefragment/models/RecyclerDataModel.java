@@ -42,7 +42,7 @@ public class RecyclerDataModel {
         {
             if (_listData.get(i).get_type() == LevelEvent.HEADER_TYPE)
                 continue;
-            _listData.get(i).set_type(typeLevel);
+// TODO            _listData.get(i).setTypeLevel(typeLevel);
         }
     }
 

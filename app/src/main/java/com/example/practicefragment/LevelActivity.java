@@ -18,7 +18,6 @@ public class LevelActivity extends AppCompatActivity {
     TextView tvNameLevel;
     String nameLevel;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +32,9 @@ public class LevelActivity extends AppCompatActivity {
     private void getData() {
         if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("typeLevel")) {
             nameLevel = getIntent().getStringExtra("nameLevel");
-            String path = "levels/ru/" + getIntent().getStringExtra("typeAcitvity")
-                    + "/" + getIntent().getStringExtra("typeLevel") + "/";
+            String path = "levels/ru/" + getIntent().getStringExtra("typeLevel") + "/";
             //ContentReaderJson.getReaderJson().getDataFromFile(path,this);
+            int tmp = 100;
         } else {
             Toast.makeText(this, R.string.no_level_data, Toast.LENGTH_SHORT).show();
         }

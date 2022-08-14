@@ -8,16 +8,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Scanner;
 
 public class ContentReaderJson {
 
     private static ContentReaderJson readerJson;
     private JSONObject object;
+    private RecyclerDataModel.typeModel typeModel;
+
 
     //! singelton
     public static ContentReaderJson getReaderJson()
@@ -28,11 +27,13 @@ public class ContentReaderJson {
         return readerJson;
     }
 
-    //! get all data from file
-    public boolean getDataFromFile(String path, Context context)
+    //! get all data from file about all levels
+    public boolean getDataAboutLevels(String path, Context context)
     {
         if (path.isEmpty())
             return false;
+
+        setTypeModel(path);
 
         object = null;
         InputStream is = null;
@@ -56,6 +57,41 @@ public class ContentReaderJson {
         return true;
     }
 
+    private void setTypeModel(String path)
+    {
+        // TODO if more than two type of levels
+        typeModel = (path.contains("cpp")) ? RecyclerDataModel.typeModel.CPP_MODEL :
+                RecyclerDataModel.typeModel.QT_MODEL;
+    }
+
+    public boolean getDataAboutLevel(int numLesson, int typeLevel, Context context)
+    {
+        // TODO localization system
+        if (getType(typeLevel).isEmpty())
+            return false;
+
+        String path = "lessons/ru/" + typeModel.toString() + "/" + getType(typeLevel)
+                + "/lesson_" + numLesson + ".json";
+        InputStream is = null;
+        try {
+            String json = new String();
+            is = context.getAssets().open("path");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+            object = new JSONObject(json);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        if (object == null)
+            return false;
+
+        return true;
+    }
 
     //! get DataModel for every levels by key
     public RecyclerDataModel getGeneralDataLevels() throws JSONException {
@@ -103,6 +139,26 @@ public class ContentReaderJson {
                 break;
             default:
                 return 999;
+        }
+        return result;
+    }
+
+    private String getType(int level)
+    {
+        String result;
+        switch (level)
+        {
+            case 0:
+                result = "JUNIOR";
+                break;
+            case 1:
+                result = "MIDDLE";
+                break;
+            case 2:
+                result = "SENIOR";
+                break;
+            default:
+                return "";
         }
         return result;
     }

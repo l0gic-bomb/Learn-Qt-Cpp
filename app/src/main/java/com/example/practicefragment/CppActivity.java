@@ -72,7 +72,7 @@ public class CppActivity extends AppCompatActivity {
          *  ...
          */
 
-        if (!getReaderJson().getDataFromFile("windows/cpp.json", this))
+        if (!getReaderJson().getDataAboutLevels("windows/cpp.json", this))
         {
             Log.e("error-json", String.valueOf(R.string.json_error));
         }
