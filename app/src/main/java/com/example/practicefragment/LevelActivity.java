@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.practicefragment.utility.ContentReaderJson;
 
@@ -18,15 +19,23 @@ public class LevelActivity extends AppCompatActivity {
     TextView tvNameLevel;
     String nameLevel;
 
+    CardView contents;
+    TextView[] general;
+    TextView[] definitions;
+    TextView[] code;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
 
         tvNameLevel = findViewById(R.id.nameLevel);
+        contents = findViewById(R.id.contents);
 
         getData();
         setData();
+
+        
     }
 
     private void getData() {
@@ -41,7 +50,8 @@ public class LevelActivity extends AppCompatActivity {
         }
     }
 
-    private void setData() {
+    private void setData()
+    {
         tvNameLevel.setText(nameLevel);
     }
 

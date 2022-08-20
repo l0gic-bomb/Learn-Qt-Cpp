@@ -69,10 +69,11 @@ public class ContentReaderJson {
     {
         // TODO localization system
 
+        String pathWithType = typeModel.toString() + "/" + path;
         InputStream is = null;
         try {
             String json = new String();
-            is = context.getAssets().open(path);
+            is = context.getAssets().open(pathWithType);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
