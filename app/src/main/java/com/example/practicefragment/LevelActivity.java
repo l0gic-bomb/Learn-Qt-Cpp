@@ -30,11 +30,12 @@ public class LevelActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("typeLevel")) {
+        if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("typeLevel")
+        && getIntent().hasExtra("idLevel")) {
             nameLevel = getIntent().getStringExtra("nameLevel");
-            String path = "levels/ru/" + getIntent().getStringExtra("typeLevel") + "/";
-            //ContentReaderJson.getReaderJson().getDataFromFile(path,this);
-            int tmp = 100;
+            String path = "levels/ru/" + getIntent().getStringExtra("typeLevel").toLowerCase()
+                    + "/" + getIntent().getStringExtra("idLevel").toLowerCase() + ".json";
+            ContentReaderJson.getReaderJson().getDataAboutLevel(path, this);
         } else {
             Toast.makeText(this, R.string.no_level_data, Toast.LENGTH_SHORT).show();
         }

@@ -3,4 +3,5 @@
 
     <string name="json_error">You can not create JSONObject</string>
     <string name="no_level_data">Do not have the data</string>
+    <string name="type_level_is_empty">Level is empty</string>
 </resources>

@@ -12,21 +12,23 @@ public class LevelEvent {
     {
         JUNIOR,
         MIDDLE,
-        SENIOR
+        SENIOR,
+        EMPTY
     }
 
-    public enum TypeActivity
+    /*public enum TypeActivity
     {
         CPP_ACTIVITY,
-        QT_ACTIVITY
-    }
+                QT_ACTIVITY
+    }*/
 
     private String _header;
     private String _name;
     private String _description;
     private int _type;
     private Levels typeLevel;
-    private TypeActivity typeActivity;
+    private String id;
+    //private TypeActivity typeActivity;
 
     public String get_header() {
         return _header;
@@ -45,7 +47,6 @@ public class LevelEvent {
         this._type = _type;
     }
     public void setTypeLevel(Levels typeLevel) { this.typeLevel = typeLevel; }
-    public void setTypeActivity(TypeActivity typeActivity) { this.typeActivity = typeActivity; }
 
     public String get_name() { return _name; }
     public String get_description() {
@@ -53,7 +54,15 @@ public class LevelEvent {
     }
     public int get_type() { return _type; }
     public Levels getTypeLevel() { return typeLevel; }
-    public TypeActivity getTypeActivity() { return typeActivity;}
+
+    //! getter and setted Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public LevelEvent (String header, String name, String description, int type) {
         _header = header;

@@ -65,7 +65,9 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         public void onClick(View v) {
                             Intent intent = new Intent(context, LevelActivity.class);
                             intent.putExtra("nameLevel", object.get_name());
-                            intent.putExtra("typeLevel", object.getTypeLevel());
+                            intent.putExtra("typeLevel", object.getTypeLevel().toString());
+                            intent.putExtra("idLevel", object.getId());
+                            // TODO need to send and num of level
                             context.startActivity(intent);
                         }
                     });

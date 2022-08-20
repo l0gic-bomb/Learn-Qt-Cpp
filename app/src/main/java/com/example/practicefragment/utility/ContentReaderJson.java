@@ -2,6 +2,7 @@ package com.example.practicefragment.utility;
 
 import android.content.Context;
 
+import com.example.practicefragment.models.LevelEvent;
 import com.example.practicefragment.models.RecyclerDataModel;
 
 import org.json.JSONArray;
@@ -64,18 +65,14 @@ public class ContentReaderJson {
                 RecyclerDataModel.typeModel.QT_MODEL;
     }
 
-    public boolean getDataAboutLevel(int numLesson, int typeLevel, Context context)
+    public boolean getDataAboutLevel(String path, Context context)
     {
         // TODO localization system
-        if (getType(typeLevel).isEmpty())
-            return false;
 
-        String path = "lessons/ru/" + typeModel.toString() + "/" + getType(typeLevel)
-                + "/lesson_" + numLesson + ".json";
         InputStream is = null;
         try {
             String json = new String();
-            is = context.getAssets().open("path");
+            is = context.getAssets().open(path);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -112,33 +109,36 @@ public class ContentReaderJson {
 
         String[] names = new String[data.length()];
         String[] descs = new String[data.length()];
+        String[] ids   = new String[data.length()];
 
         for (int i = 0; i < data.length(); ++i) {
             JSONObject tmpJsonObj = data.getJSONObject(i);
             names[i] = tmpJsonObj.getString("header");
             descs[i] = tmpJsonObj.getString("desc");
+            ids[i]   = tmpJsonObj.getString("id");
         }
 
-        model.setListData(level, names, descs);
-        model.setType(getType(level), model.getSize());
+        int position = model.getSize();
+        model.setListData(level, names, descs, ids);
+        model.setType(getType(level), position);
     }
 
-    private int getType(String level)
+    private LevelEvent.Levels getType(String level)
     {
-        int result;
+        LevelEvent.Levels result;
         switch (level)
         {
             case "JUNIOR" :
-                result = 0;
+                result = LevelEvent.Levels.JUNIOR;
                 break;
             case "MIDDLE" :
-                result = 1;
+                result = LevelEvent.Levels.MIDDLE;
                 break;
             case "SENIOR" :
-                result = 2;
+                result = LevelEvent.Levels.SENIOR;
                 break;
             default:
-                return 999;
+                return LevelEvent.Levels.EMPTY;
         }
         return result;
     }
