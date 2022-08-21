@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLinearLayuot"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:paddingLeft="32dp"
-    android:paddingBottom="12dp"
-    android:id="@+id/mainLinearLayuot">
+    android:paddingBottom="12dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"
         android:layout_marginTop="25dp"
-        />
+        android:src="@drawable/ic_home" />
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/innerHorVerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingLeft="32dp"
-        android:paddingBottom="12dp"
-        android:id="@+id/innerHorVerLayout">
+        android:paddingBottom="12dp">
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
             android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
             android:layout_marginBottom="4dp"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
             android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
             android:layout_marginBottom="4dp"
             android:textSize="18sp" />
 
     </LinearLayout>
-
-
 </LinearLayout>

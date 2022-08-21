@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:layout_marginBottom="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:src="@drawable/senior"
-                />
-            
+                android:src="@drawable/senior" />
+
             <TextView
                 android:id="@+id/nameLevel"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font"
                 android:text="Here will be header"
                 android:textAlignment="center"
-                android:textSize="32sp"
                 android:textColor="@android:color/black"
-                android:fontFamily="@font"/>
-            
+                android:textSize="32sp" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/contents"
                 android:layout_width="match_parent"
@@ -42,18 +42,25 @@
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="#e3f2fd"
                 app:contentPadding="15dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
-                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_contents"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
             </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_texts"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
 
-        
     </ScrollView>
 
     <TextView
@@ -61,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="35sp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="35sp" />
 
 </LinearLayout>

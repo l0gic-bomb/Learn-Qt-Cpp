@@ -16,8 +16,8 @@ public class RecyclerDataModel {
 
     public enum typeModel
     {
-        CPP_MODEL,
-        QT_MODEL
+        cpp,
+        qt
     }
 
     private List<LevelEvent> _listData;

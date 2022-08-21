@@ -1,4 +1,4 @@
-package com.example.practicefragment;
+package com.example.practicefragment.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.practicefragment.LevelActivity;
+import com.example.practicefragment.R;
 import com.example.practicefragment.models.LevelEvent;
 
 import java.util.List;
@@ -23,12 +25,12 @@ import static com.example.practicefragment.models.LevelEvent.ITEM_TYPE;
  * и конкретным уровнем
  */
 
-public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class LevelsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<LevelEvent> _list;
     private Context context;
 
-    public DifferentRowAdapter(List<LevelEvent> list, Context ct) {
+    public LevelsAdapter(List<LevelEvent> list, Context ct) {
         this._list = list;
         this.context = ct;
     }
@@ -67,7 +69,6 @@ public class DifferentRowAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                             intent.putExtra("nameLevel", object.get_name());
                             intent.putExtra("typeLevel", object.getTypeLevel().toString());
                             intent.putExtra("idLevel", object.getId());
-                            // TODO need to send and num of level
                             context.startActivity(intent);
                         }
                     });

@@ -18,7 +18,6 @@ public class ContentReaderJson {
     private JSONObject object;
     private RecyclerDataModel.typeModel typeModel;
 
-
     //! singelton
     public static ContentReaderJson getReaderJson()
     {
@@ -61,25 +60,24 @@ public class ContentReaderJson {
     private void setTypeModel(String path)
     {
         // TODO if more than two type of levels
-        typeModel = (path.contains("cpp")) ? RecyclerDataModel.typeModel.CPP_MODEL :
-                RecyclerDataModel.typeModel.QT_MODEL;
+        typeModel = (path.contains("cpp")) ? RecyclerDataModel.typeModel.cpp :
+                RecyclerDataModel.typeModel.qt;
     }
 
     public boolean getDataAboutLevel(String path, Context context)
     {
         // TODO localization system
 
-        String pathWithType = typeModel.toString() + "/" + path;
         InputStream is = null;
         try {
             String json = new String();
-            is = context.getAssets().open(pathWithType);
+            is = context.getAssets().open(path);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
-            object = new JSONObject(json);
+            object.getJSONObject(json);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
             return false;
@@ -144,23 +142,17 @@ public class ContentReaderJson {
         return result;
     }
 
-    private String getType(int level)
-    {
-        String result;
-        switch (level)
-        {
-            case 0:
-                result = "JUNIOR";
-                break;
-            case 1:
-                result = "MIDDLE";
-                break;
-            case 2:
-                result = "SENIOR";
-                break;
-            default:
-                return "";
+    // TODO need generalize this method
+    public String[] jsonArrayToStringArray(String nameArray) throws JSONException {
+        JSONArray array = object.getJSONArray(nameArray);
+        String[] strings = new String[array.length()];
+        for (int i = 0; i <= array.length(); ++i) {
+            strings[i] = array.getJSONObject(i).getString("name");
         }
-        return result;
+        return strings;
+    }
+
+    public RecyclerDataModel.typeModel getTypeModel() {
+        return typeModel;
     }
 }

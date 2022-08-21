@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.practicefragment.adapters.LevelsAdapter;
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -62,9 +63,9 @@ public class QtActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        recyclerDataModel.setModel(RecyclerDataModel.typeModel.QT_MODEL);
+        recyclerDataModel.setModel(RecyclerDataModel.typeModel.qt);
 
-        DifferentRowAdapter adapter = new DifferentRowAdapter(recyclerDataModel.getData(), this);
+        LevelsAdapter adapter = new LevelsAdapter(recyclerDataModel.getData(), this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_cpp);
