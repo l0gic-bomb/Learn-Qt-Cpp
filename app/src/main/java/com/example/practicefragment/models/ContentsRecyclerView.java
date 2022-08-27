@@ -17,4 +17,24 @@ public class ContentsRecyclerView {
             contents.add(result);
         }
     }
+
+    public String[] getContentData()
+    {
+        if (contents.isEmpty())
+            return null;
+
+        String[] strings = new String[contents.size()];
+        for (int i = 0; i < contents.size(); ++i)
+        {
+            strings[i] = contents.get(i).getNameContent();
+        }
+        return strings;
+    }
+
+    public boolean isEmpty()
+    {
+        if (contents.isEmpty())
+            return false;
+        return true;
+    }
 }

@@ -28,7 +28,6 @@ import org.json.JSONException;
  */
 
 public class CppActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

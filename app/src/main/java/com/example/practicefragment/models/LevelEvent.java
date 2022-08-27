@@ -19,7 +19,7 @@ public class LevelEvent {
     /*public enum TypeActivity
     {
         CPP_ACTIVITY,
-                QT_ACTIVITY
+        QT_ACTIVITY
     }*/
 
     private String _header;

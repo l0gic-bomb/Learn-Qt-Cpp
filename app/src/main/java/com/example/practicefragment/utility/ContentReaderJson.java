@@ -45,6 +45,7 @@ public class ContentReaderJson {
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
+            object = null;
             object = new JSONObject(json);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
@@ -77,7 +78,8 @@ public class ContentReaderJson {
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
-            object.getJSONObject(json);
+            object = null;
+            object = new JSONObject(json);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
             return false;
@@ -146,7 +148,7 @@ public class ContentReaderJson {
     public String[] jsonArrayToStringArray(String nameArray) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
         String[] strings = new String[array.length()];
-        for (int i = 0; i <= array.length(); ++i) {
+        for (int i = 0; i < array.length(); ++i) {
             strings[i] = array.getJSONObject(i).getString("name");
         }
         return strings;

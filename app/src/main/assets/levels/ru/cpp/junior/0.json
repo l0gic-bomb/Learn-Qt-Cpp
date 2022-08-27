@@ -11,20 +11,15 @@
 		}
 	],
 	"Structure_theory" : [
-		"text" {
-
+		{
+			"name" : "Общие сведения о языке",
+			"text" : "",
+			"defenition" : "",
+			"text" : ""
 		},
-		"defenition" {
-
+		{
 		},
-		"text" {
-
-		},
-		"code" {
-
-		}, 
-		"text" {
-			
+		{
 		}
 	]
 }
