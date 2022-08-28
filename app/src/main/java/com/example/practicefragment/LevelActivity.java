@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.practicefragment.adapters.LevelsAdapter;
 import com.example.practicefragment.adapters.TheoryContentAdapter;
 import com.example.practicefragment.models.ContentsRecyclerView;
+import com.example.practicefragment.models.LevelEvent;
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.example.practicefragment.utility.ContentReaderJson;
 
@@ -29,7 +31,10 @@ import java.net.URI;
 public class LevelActivity extends AppCompatActivity {
 
     TextView tvNameLevel;
-    String nameLevel;
+    ImageView imageLevel;
+
+    String currentLevel;
+
 
     TextView[] general;
     TextView[] definitions;
@@ -41,19 +46,19 @@ public class LevelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_level);
 
         tvNameLevel = findViewById(R.id.nameLevel);
+        imageLevel = findViewById(R.id.image_prog);
 
         getDataFromJson();
-        try {
-            setData();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        initImage();
+
     }
 
     private void getDataFromJson() {
         if (getIntent().hasExtra("nameLevel") && getIntent().hasExtra("typeLevel")
         && getIntent().hasExtra("idLevel")) {
-            nameLevel = getIntent().getStringExtra("nameLevel");
+            tvNameLevel.setText(getIntent().getStringExtra("nameLevel"));
+
+            currentLevel = getIntent().getStringExtra("typeLevel").toLowerCase();
             String path = "levels/ru/" + getReaderJson().getTypeModel().toString() +
                     "/" + getIntent().getStringExtra("typeLevel").toLowerCase()
                     + "/" + getIntent().getStringExtra("idLevel").toLowerCase() + ".json";
@@ -61,26 +66,6 @@ public class LevelActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, R.string.no_level_data, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void setData() throws JSONException {
-        tvNameLevel.setText(nameLevel);
-
-       /* ContentsRecyclerView recyclerDataModel = new ContentsRecyclerView();
-        recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Contents"));
-        if (recyclerDataModel.isEmpty())
-        {
-            Log.e("error-json", String.valueOf(R.string.json_error));
-        }
-
-        TheoryContentAdapter adapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(adapter);*/
-
     }
 
     @Override
@@ -105,6 +90,23 @@ public class LevelActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(adapter);
+    }
+
+    private void initImage() {
+        switch (currentLevel)
+        {
+            case "junior" :
+                imageLevel.setImageResource(R.drawable.junior);
+                break;
+            case "middle" :
+                imageLevel.setImageResource(R.drawable.middle);
+                break;
+            case "senior" :
+                imageLevel.setImageResource(R.drawable.senior);
+                break;
+            default:
+                break;
+        }
     }
 
 }
