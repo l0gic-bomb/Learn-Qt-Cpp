@@ -154,6 +154,18 @@ public class ContentReaderJson {
         return strings;
     }
 
+    // TODO HERE 
+    public String[] NEEDCHANGETHISMETHD_jsonArrayToStringArray(String nameArray) throws JSONException {
+        JSONArray array = object.getJSONArray(nameArray);
+        String[] strings = new String[array.length()];
+        for (int i = 0; i < array.length(); ++i) {
+            strings[i] = array.getJSONObject(i).getString("name");
+        }
+        return strings;
+    }
+
+
+
     public RecyclerDataModel.typeModel getTypeModel() {
         return typeModel;
     }

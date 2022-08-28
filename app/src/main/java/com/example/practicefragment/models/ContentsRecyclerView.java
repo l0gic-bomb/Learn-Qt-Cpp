@@ -10,10 +10,10 @@ public class ContentsRecyclerView {
         this.contents = new ArrayList<>();
     }
 
-    public void setListData (String[] theoryies) {
-        for (int i = 0; i < theoryies.length; ++i)
+    public void setListData (String[] theories) {
+        for (int i = 0; i < theories.length; ++i)
         {
-            ContentsTheory result = new ContentsTheory(String.valueOf(i + 1) + "." + theoryies[i]);
+            ContentsTheory result = new ContentsTheory(String.valueOf(i + 1) + "." + theories[i]);
             contents.add(result);
         }
     }

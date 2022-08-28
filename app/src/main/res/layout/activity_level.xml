@@ -48,21 +48,21 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_texts"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1" />
+                android:layout_weight="0"
+                tools:listitem="@android:layout/simple_list_item_1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Here will be text"
+                />
+
 
         </LinearLayout>
 
 
     </ScrollView>
-
-    <TextView
-        android:id="@+id/nameLevel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="35sp" />
 
 </LinearLayout>

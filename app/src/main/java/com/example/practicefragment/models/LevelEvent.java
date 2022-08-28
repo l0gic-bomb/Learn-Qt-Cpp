@@ -16,19 +16,12 @@ public class LevelEvent {
         EMPTY
     }
 
-    /*public enum TypeActivity
-    {
-        CPP_ACTIVITY,
-        QT_ACTIVITY
-    }*/
-
     private String _header;
     private String _name;
     private String _description;
     private int _type;
     private Levels typeLevel;
     private String id;
-    //private TypeActivity typeActivity;
 
     public String get_header() {
         return _header;
@@ -59,7 +52,6 @@ public class LevelEvent {
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
