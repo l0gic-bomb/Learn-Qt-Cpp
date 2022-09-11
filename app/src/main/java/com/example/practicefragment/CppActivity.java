@@ -1,6 +1,7 @@
 package com.example.practicefragment;
 
 import static com.example.practicefragment.utility.ContentReaderJson.getReaderJson;
+import static com.example.practicefragment.utility.Utility.getUtility;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -70,6 +71,8 @@ public class CppActivity extends AppCompatActivity {
          *  название уровня 2
          *  ...
          */
+
+        getUtility().setContext(this);
 
         if (!getReaderJson().getDataAboutLevels("windows/cpp.json", this))
         {
