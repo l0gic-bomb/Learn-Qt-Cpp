@@ -3,6 +3,7 @@ package com.example.practicefragment.utility;
 import android.content.Context;
 
 import com.example.practicefragment.models.LevelEvent;
+import com.example.practicefragment.models.MainTheory;
 import com.example.practicefragment.models.RecyclerDataModel;
 
 import org.json.JSONArray;
@@ -11,6 +12,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContentReaderJson {
 
@@ -149,22 +152,31 @@ public class ContentReaderJson {
         JSONArray array = object.getJSONArray(nameArray);
         String[] strings = new String[array.length()];
         for (int i = 0; i < array.length(); ++i) {
+            // TODO specially here!
             strings[i] = array.getJSONObject(i).getString("name");
         }
         return strings;
     }
 
-    // TODO HERE
-    public String[] NEEDCHANGETHISMETHD_jsonArrayToStringArray(String nameArray) throws JSONException {
+    // IT'S SUCH A BAD CODE
+    // TODO jsonArrayToStringArray need generalize
+    public String[] jsonArrayToStringArray_2(String nameArray) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
+        List<MainTheory> theoryList = new ArrayList<>(array.length());
         String[] strings = new String[array.length()];
         for (int i = 0; i < array.length(); ++i) {
-            strings[i] = array.getJSONObject(i).getString("name");
+            JSONArray names = array.getJSONObject(i).names();
+            for (int j = 0; j < names.length(); ++j)
+            {
+                String nameObject = names.get(j).toString();
+
+            }
         }
         return strings;
     }
 
-
+    // Идея использовать для считывания данных из JSON один метод,
+    // А для полей другой метод. Поля сохранять, а потом по ним пробегаться при считывании данных
 
     public RecyclerDataModel.typeModel getTypeModel() {
         return typeModel;

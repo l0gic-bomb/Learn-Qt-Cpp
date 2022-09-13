@@ -21,6 +21,7 @@ import com.example.practicefragment.adapters.LevelsAdapter;
 import com.example.practicefragment.adapters.TheoryContentAdapter;
 import com.example.practicefragment.models.ContentsRecyclerView;
 import com.example.practicefragment.models.LevelEvent;
+import com.example.practicefragment.models.MainTheoryRecyclerView;
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.example.practicefragment.utility.ContentReaderJson;
 
@@ -71,25 +72,9 @@ public class LevelActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        initAbout();
+        initMainTheory();
 
-        ContentsRecyclerView recyclerDataModel = new ContentsRecyclerView();
-        try {
-            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Contents"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (recyclerDataModel.isEmpty())
-        {
-            Log.e("error-json", String.valueOf(R.string.json_error));
-        }
-
-        TheoryContentAdapter adapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(adapter);
     }
 
     private void initImage() {
@@ -107,6 +92,51 @@ public class LevelActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    private void initAbout()
+    {
+        ContentsRecyclerView recyclerDataModel = new ContentsRecyclerView();
+        try {
+            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Contents"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (recyclerDataModel.isEmpty())
+        {
+            Log.e("error-json", String.valueOf(R.string.json_error));
+        }
+
+        TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(theoryAdapter);
+    }
+
+    private void initMainTheory()
+    {
+        MainTheoryRecyclerView recyclerDataModel = new MainTheoryRecyclerView();
+        // TODO in the beginning need to give name of block after that string[]
+        try {
+            getReaderJson().jsonArrayToStringArray_2("Theory");
+            //recyclerDataModel.setListData();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (recyclerDataModel.isEmpty())
+        {
+            Log.e("error-json", String.valueOf(R.string.json_error));
+        }
+        /*
+        TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(theoryAdapter);*/
     }
 
 }

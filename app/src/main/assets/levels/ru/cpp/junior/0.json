@@ -10,16 +10,26 @@
 			"name" : "Достоинства и недостатки языка"
 		}
 	],
-	"Structure_theory" : [
+	"Theory" : [
 		{
+			"header" : "Общие сведения о языке",
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"defenition" : "texttext",
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttextfre"
+		},
+		{
+			"header" : "Общие сведения о языке",
 			"name" : "Общие сведения о языке",
-			"text" : "",
-			"defenition" : "",
-			"text" : ""
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"defenition" : "texttext",
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext"
 		},
 		{
-		},
-		{
+			"header" : "Общие сведения о языке",
+			"name" : "Общие сведения о языке",
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"defenition" : "texttext",
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext"
 		}
 	]
 }
