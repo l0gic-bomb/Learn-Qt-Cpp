@@ -10,7 +10,8 @@ public class MainTheory {
         header,
         text_theory,
         definition,
-        code
+        code,
+        EMPTY
     }
 
     Pair<typeTheory, String> theory;

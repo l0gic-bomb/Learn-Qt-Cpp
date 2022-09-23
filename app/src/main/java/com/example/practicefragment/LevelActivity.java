@@ -35,7 +35,8 @@ public class LevelActivity extends AppCompatActivity {
     ImageView imageLevel;
 
     String currentLevel;
-
+    // For saving contents
+    String [] contents;
 
     TextView[] general;
     TextView[] definitions;
@@ -98,7 +99,8 @@ public class LevelActivity extends AppCompatActivity {
     {
         ContentsRecyclerView recyclerDataModel = new ContentsRecyclerView();
         try {
-            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Contents"));
+            String[] namesField = {"name"};
+            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Contents", namesField));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -118,10 +120,10 @@ public class LevelActivity extends AppCompatActivity {
     private void initMainTheory()
     {
         MainTheoryRecyclerView recyclerDataModel = new MainTheoryRecyclerView();
-        // TODO in the beginning need to give name of block after that string[]
         try {
-            getReaderJson().jsonArrayToStringArray_2("Theory");
-            //recyclerDataModel.setListData();
+            // TODO Придумать для множественных строк
+            String[] namesField = {"header", "text", "definition"};
+            getReaderJson().jsonArrayToStringArray("Theory", namesField);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -130,13 +132,13 @@ public class LevelActivity extends AppCompatActivity {
         {
             Log.e("error-json", String.valueOf(R.string.json_error));
         }
-        /*
+
         TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(theoryAdapter);*/
+        mRecyclerView.setAdapter(theoryAdapter);
     }
 
 }

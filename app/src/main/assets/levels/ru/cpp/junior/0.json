@@ -14,22 +14,17 @@
 		{
 			"header" : "Общие сведения о языке",
 			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
-			"defenition" : "texttext",
-			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttextfre"
+			"definition" : "texttext"
 		},
 		{
 			"header" : "Общие сведения о языке",
-			"name" : "Общие сведения о языке",
 			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
-			"defenition" : "texttext",
-			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext"
+			"definition" : "texttext"
 		},
 		{
 			"header" : "Общие сведения о языке",
-			"name" : "Общие сведения о языке",
 			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
-			"defenition" : "texttext",
-			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext"
+			"definition" : "texttext"
 		}
 	]
 }

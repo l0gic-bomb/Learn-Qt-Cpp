@@ -148,31 +148,15 @@ public class ContentReaderJson {
     }
 
     // TODO need generalize this method
-    public String[] jsonArrayToStringArray(String nameArray) throws JSONException {
+    public String[] jsonArrayToStringArray(String nameArray, String[] namesField) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
-        String[] strings = new String[array.length()];
+        String[] results = new String[array.length()];
         for (int i = 0; i < array.length(); ++i) {
-            // TODO specially here!
-            strings[i] = array.getJSONObject(i).getString("name");
-        }
-        return strings;
-    }
-
-    // IT'S SUCH A BAD CODE
-    // TODO jsonArrayToStringArray need generalize
-    public String[] jsonArrayToStringArray_2(String nameArray) throws JSONException {
-        JSONArray array = object.getJSONArray(nameArray);
-        List<MainTheory> theoryList = new ArrayList<>(array.length());
-        String[] strings = new String[array.length()];
-        for (int i = 0; i < array.length(); ++i) {
-            JSONArray names = array.getJSONObject(i).names();
-            for (int j = 0; j < names.length(); ++j)
-            {
-                String nameObject = names.get(j).toString();
-
+            for (int j = 0; j < namesField.length; ++j) {
+                results[i] = array.getJSONObject(i).getString(namesField[j]);
             }
         }
-        return strings;
+        return results;
     }
 
     // Идея использовать для считывания данных из JSON один метод,
