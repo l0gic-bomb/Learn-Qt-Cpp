@@ -123,7 +123,7 @@ public class LevelActivity extends AppCompatActivity {
         try {
             // TODO Придумать для множественных строк
             String[] namesField = {"header", "text", "definition"};
-            getReaderJson().jsonArrayToStringArray("Theory", namesField);
+            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Theory", namesField));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -133,12 +133,12 @@ public class LevelActivity extends AppCompatActivity {
             Log.e("error-json", String.valueOf(R.string.json_error));
         }
 
-        TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
+       /* TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(theoryAdapter);
+        mRecyclerView.setAdapter(theoryAdapter);*/
     }
 
 }

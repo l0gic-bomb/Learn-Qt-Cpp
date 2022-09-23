@@ -31,10 +31,9 @@ public class MainTheoryRecyclerView {
             JSONArray jsonArray = Jsonobject.getJSONArray(theories[i]);
             for (int j = 0; j < jsonArray.length(); ++j)
             {
-                // ЗДЕСЬ НУЖНО ЗАПИСАТЬ ТЕОРИЮ
                 String elem = jsonArray.get(j).toString();
-                MainTheory.typeTheory type = checkTypeData(elem);
-
+                String key = jsonArray.getString(j);
+                int tmp = 100;
             }
 
            // this.theories.add((MainTheory) theories[i]);
