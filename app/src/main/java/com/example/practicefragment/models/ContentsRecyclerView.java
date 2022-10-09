@@ -13,7 +13,7 @@ public class ContentsRecyclerView {
     public void setListData (String[] theories) {
         for (int i = 0; i < theories.length; ++i)
         {
-            ContentsTheory result = new ContentsTheory(String.valueOf(i + 1) + "." + theories[i]);
+            ContentsTheory result = new ContentsTheory(theories[i]);
             contents.add(result);
         }
     }

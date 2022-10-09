@@ -16,13 +16,6 @@
             android:layout_marginBottom="100dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/image_prog"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:src="@drawable/senior" />
-
             <TextView
                 android:id="@+id/nameLevel"
                 android:layout_width="match_parent"
@@ -46,7 +39,7 @@
                 tools:listitem="@android:layout/simple_list_item_1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_texts"
+                android:id="@+id/recycler_view_theory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

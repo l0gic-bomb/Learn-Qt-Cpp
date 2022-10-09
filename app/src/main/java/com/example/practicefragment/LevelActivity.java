@@ -2,22 +2,20 @@ package com.example.practicefragment;
 
 import static com.example.practicefragment.utility.ContentReaderJson.getReaderJson;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practicefragment.adapters.LevelsAdapter;
+import com.example.practicefragment.adapters.MainTheoryAdapter;
 import com.example.practicefragment.adapters.TheoryContentAdapter;
 import com.example.practicefragment.models.ContentsRecyclerView;
 import com.example.practicefragment.models.LevelEvent;
@@ -27,12 +25,9 @@ import com.example.practicefragment.utility.ContentReaderJson;
 
 import org.json.JSONException;
 
-import java.net.URI;
-
 public class LevelActivity extends AppCompatActivity {
 
     TextView tvNameLevel;
-    ImageView imageLevel;
 
     String currentLevel;
     // For saving contents
@@ -48,11 +43,8 @@ public class LevelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_level);
 
         tvNameLevel = findViewById(R.id.nameLevel);
-        imageLevel = findViewById(R.id.image_prog);
 
         getDataFromJson();
-        initImage();
-
     }
 
     private void getDataFromJson() {
@@ -76,23 +68,6 @@ public class LevelActivity extends AppCompatActivity {
         initAbout();
         initMainTheory();
 
-    }
-
-    private void initImage() {
-        switch (currentLevel)
-        {
-            case "junior" :
-                imageLevel.setImageResource(R.drawable.junior);
-                break;
-            case "middle" :
-                imageLevel.setImageResource(R.drawable.middle);
-                break;
-            case "senior" :
-                imageLevel.setImageResource(R.drawable.senior);
-                break;
-            default:
-                break;
-        }
     }
 
     private void initAbout()
@@ -131,12 +106,12 @@ public class LevelActivity extends AppCompatActivity {
             Log.e("error-json", String.valueOf(R.string.json_error));
         }
 
-        //TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getTheories(), this);
-        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        //RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
-        //mRecyclerView.setLayoutManager(linearLayoutManager);
-        //mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        //mRecyclerView.setAdapter(theoryAdapter);
+        MainTheoryAdapter theoryAdapter = new MainTheoryAdapter(recyclerDataModel.getTheories(), this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_theory);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(theoryAdapter);
     }
 
 }

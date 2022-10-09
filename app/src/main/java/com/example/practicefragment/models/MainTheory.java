@@ -2,13 +2,15 @@ package com.example.practicefragment.models;
 
 import android.util.Pair;
 
-import java.util.List;
-
+// Теория в LevelActivity
 public class MainTheory {
+    public static final int TYPE_TEXT = 0;
+    public static final int TYPE_DEF = 1;
+    public static final int TYPE_CODE = 2;
+
     public enum typeTheory
     {
-        header,
-        text_theory,
+        text,
         definition,
         code,
         EMPTY
@@ -18,10 +20,6 @@ public class MainTheory {
 
     public MainTheory(String type, String theory) {
         this.theory = new Pair<typeTheory, String>(getTypeTheoryByStr(type), theory);
-    }
-
-    public MainTheory(Pair<typeTheory, String> theory) {
-        this.theory = theory;
     }
 
     public Pair<typeTheory, String> getTheory() {
@@ -34,19 +32,26 @@ public class MainTheory {
 
     public typeTheory getTypeTheoryByStr(String type)
     {
-        if (type.contains("header")) {
-            return typeTheory.header;
-        }
-        else if (type.contains("code")) {
+        if (type.contains("code")) {
             return typeTheory.code;
         }
         else if (type.contains("definition")) {
             return typeTheory.definition;
         }
         else if (type.contains("text")) {
-            return typeTheory.text_theory;
+            return typeTheory.text;
         }
         else
             return typeTheory.EMPTY;
+    }
+
+    public typeTheory getType()
+    {
+        return theory.first;
+    }
+
+    public String getTextTheory()
+    {
+        return theory.second.toString();
     }
 }

@@ -1,10 +1,8 @@
 package com.example.practicefragment.models;
 
-import com.example.practicefragment.LevelActivity;
-
-// Модель уровней
+// Модель уровней (CppActivity/QtActivity)
 public class LevelEvent {
-    // TO DO enum typeTextLevel
+    // TODO enum typeTextLevel
     public static final int HEADER_TYPE = 0;
     public static final int ITEM_TYPE = 1;
 
@@ -27,18 +25,6 @@ public class LevelEvent {
         return _header;
     }
 
-    public void set_header(String _header) {
-        this._header = _header;
-    }
-    public void set_name(String _name) {
-        this._name = _name;
-    }
-    public void set_description(String _description) {
-        this._description = _description;
-    }
-    public void set_type(int _type) {
-        this._type = _type;
-    }
     public void setTypeLevel(Levels typeLevel) { this.typeLevel = typeLevel; }
 
     public String get_name() { return _name; }
@@ -48,7 +34,6 @@ public class LevelEvent {
     public int get_type() { return _type; }
     public Levels getTypeLevel() { return typeLevel; }
 
-    //! getter and setted Id
     public String getId() {
         return id;
     }

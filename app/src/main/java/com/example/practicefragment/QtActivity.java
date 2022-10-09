@@ -1,7 +1,6 @@
 package com.example.practicefragment;
 
 import static com.example.practicefragment.utility.ContentReaderJson.getReaderJson;
-import static com.example.practicefragment.utility.Utility.getUtility;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,8 +51,6 @@ public class QtActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        getUtility().setContext(this);
 
         if (!getReaderJson().getDataAboutLevels("windows/qt.json", this))
         {

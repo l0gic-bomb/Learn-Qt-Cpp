@@ -12,18 +12,16 @@
 	],
 	"Theory" : [
 		{
-			"header" : "Общие сведения о языке",
-			"text_0" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"text_0" : "text text texttexttexttexttexttextt exttexttexttexttexttexttexttexttexttext",
+			"code_0" : "std::cout << hello, world << std::endl; ",
 			"definition_0" : "texttext",
 			"text_1" : "Hello"
 		},
 		{
-			"header" : "Общие сведения о языке",
 			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
 			"definition" : "texttext"
 		},
 		{
-			"header" : "Общие сведения о языке",
 			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
 			"definition" : "texttext"
 		}

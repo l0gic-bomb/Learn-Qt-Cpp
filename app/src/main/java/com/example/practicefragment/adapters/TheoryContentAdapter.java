@@ -38,7 +38,6 @@ public class TheoryContentAdapter extends RecyclerView.Adapter<RecyclerView.View
         {
             ((ContentViewHolder) holder).content.setText(contentsTheory.getNameContent());
         }
-
     }
 
     @Override
@@ -49,13 +48,11 @@ public class TheoryContentAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public static class ContentViewHolder extends RecyclerView.ViewHolder {
-        public TextView content;
-        LinearLayout linearLayout;
+        private TextView content;
 
         public ContentViewHolder(View itemView) {
             super(itemView);
             content = (TextView) itemView.findViewById(R.id.contentTextView);
-            linearLayout = (LinearLayout)itemView.findViewById(R.id.mainLinearLayuot);
         }
 
     }

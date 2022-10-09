@@ -45,7 +45,7 @@ public class ContentReaderJson {
         object = null;
         InputStream is = null;
         try {
-            String json = new String();
+            String json;
             is = context.getAssets().open(path);
             int size = is.available();
             byte[] buffer = new byte[size];
@@ -159,13 +159,12 @@ public class ContentReaderJson {
         String[] results = new String[array.length()];
         for (int i = 0; i < array.length(); ++i) {
             for (int j = 0; j < namesField.length; ++j) {
-                String string = array.getString(j);
-                JSONObject jsonObject = array.getJSONObject(i);
                 results[i] = array.getJSONObject(i).getString(namesField[j]);
             }
         }
         return results;
     }
+
 
     public ArrayList<MainTheory> jsonArrayToStringArray(String nameArray) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
