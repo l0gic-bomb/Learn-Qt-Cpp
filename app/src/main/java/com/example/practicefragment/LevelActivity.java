@@ -121,9 +121,7 @@ public class LevelActivity extends AppCompatActivity {
     {
         MainTheoryRecyclerView recyclerDataModel = new MainTheoryRecyclerView();
         try {
-            // TODO Придумать для множественных строк
-            String[] namesField = {"header", "text", "definition"};
-            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Theory", namesField));
+            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Theory"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

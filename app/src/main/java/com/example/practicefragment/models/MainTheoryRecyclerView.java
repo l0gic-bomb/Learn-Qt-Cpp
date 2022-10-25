@@ -24,20 +24,8 @@ public class MainTheoryRecyclerView {
         theories.add(newTheory);
     }
 
-    public void setListData (String[] theories) throws JSONException {
-        for (int i = 0; i < theories.length; ++i)
-        {
-            JSONObject Jsonobject = new JSONObject();
-            JSONArray jsonArray = Jsonobject.getJSONArray(theories[i]);
-            for (int j = 0; j < jsonArray.length(); ++j)
-            {
-                String elem = jsonArray.get(j).toString();
-                String key = jsonArray.getString(j);
-                int tmp = 100;
-            }
-
-           // this.theories.add((MainTheory) theories[i]);
-        }
+    public void setListData (List<MainTheory> theories) throws JSONException {
+        this.theories = theories;
     }
 
     public boolean isEmpty()

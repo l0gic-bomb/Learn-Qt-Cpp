@@ -2,6 +2,8 @@ package com.example.practicefragment.utility;
 
 import android.content.Context;
 
+import androidx.core.util.Pair;
+
 import com.example.practicefragment.models.LevelEvent;
 import com.example.practicefragment.models.MainTheory;
 import com.example.practicefragment.models.RecyclerDataModel;
@@ -13,6 +15,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class ContentReaderJson {
@@ -94,20 +98,23 @@ public class ContentReaderJson {
         return true;
     }
 
+    // TODO
+    // Использовать для считывания данных из JSON один метод
+
     //! get DataModel for every levels by key
     public RecyclerDataModel getGeneralDataLevels() throws JSONException {
         if (object == null)
             return null;
 
         RecyclerDataModel model = new RecyclerDataModel();
-        getTmpModel("JUNIOR", model);
-        getTmpModel("MIDDLE", model);
-        getTmpModel("SENIOR", model);
+        setDataModel("JUNIOR", model);
+        setDataModel("MIDDLE", model);
+        setDataModel("SENIOR", model);
 
         return model;
     }
 
-    private void getTmpModel(String level, RecyclerDataModel model) throws JSONException
+    private void setDataModel(String level, RecyclerDataModel model) throws JSONException
     {
         JSONArray data = object.getJSONArray(level);
 
@@ -147,20 +154,34 @@ public class ContentReaderJson {
         return result;
     }
 
-    // TODO need generalize this method
     public String[] jsonArrayToStringArray(String nameArray, String[] namesField) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
         String[] results = new String[array.length()];
         for (int i = 0; i < array.length(); ++i) {
             for (int j = 0; j < namesField.length; ++j) {
+                String string = array.getString(j);
+                JSONObject jsonObject = array.getJSONObject(i);
                 results[i] = array.getJSONObject(i).getString(namesField[j]);
             }
         }
         return results;
     }
 
-    // Идея использовать для считывания данных из JSON один метод,
-    // А для полей другой метод. Поля сохранять, а потом по ним пробегаться при считывании данных
+    public ArrayList<MainTheory> jsonArrayToStringArray(String nameArray) throws JSONException {
+        JSONArray array = object.getJSONArray(nameArray);
+        ArrayList<MainTheory> results = new ArrayList<MainTheory>();
+        for (int i = 0; i < array.length(); ++i) {
+            JSONObject jsonObject = array.getJSONObject(i);
+            Iterator<String> iterStr = jsonObject.keys();
+            while (iterStr.hasNext())
+            {
+                String key = iterStr.next();
+                MainTheory tmp = new MainTheory(key, jsonObject.getString(key));
+                results.add(tmp);
+            }
+        }
+        return results;
+    }
 
     public RecyclerDataModel.typeModel getTypeModel() {
         return typeModel;

@@ -13,8 +13,9 @@
 	"Theory" : [
 		{
 			"header" : "Общие сведения о языке",
-			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
-			"definition" : "texttext"
+			"text_0" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"definition_0" : "texttext",
+			"text_1" : "Hello"
 		},
 		{
 			"header" : "Общие сведения о языке",
