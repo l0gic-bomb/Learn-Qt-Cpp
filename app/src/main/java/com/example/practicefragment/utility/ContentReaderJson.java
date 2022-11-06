@@ -7,6 +7,11 @@ import androidx.core.util.Pair;
 import com.example.practicefragment.models.LevelEvent;
 import com.example.practicefragment.models.MainTheory;
 import com.example.practicefragment.models.RecyclerDataModel;
+import com.example.practicefragment.models.theory.CodeTheoryCreator;
+import com.example.practicefragment.models.theory.DefenitionTheoryCreator;
+import com.example.practicefragment.models.theory.HeaderTheoryCreator;
+import com.example.practicefragment.models.theory.TextTheoryCreator;
+import com.example.practicefragment.models.theory.Theory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -124,6 +129,7 @@ public class ContentReaderJson {
 
         for (int i = 0; i < data.length(); ++i) {
             JSONObject tmpJsonObj = data.getJSONObject(i);
+            // TODO ключи можно взять из самой JSON. Этот метод становится не нужен???
             names[i] = tmpJsonObj.getString("header");
             descs[i] = tmpJsonObj.getString("desc");
             ids[i]   = tmpJsonObj.getString("id");
@@ -165,10 +171,32 @@ public class ContentReaderJson {
         return results;
     }
 
+    /*public ArrayList<Theory> arrayTheoryByString(String nameArray) throws JSONException {
+        JSONArray array = object.getJSONArray(nameArray);
+        ArrayList<Theory> results = new ArrayList<Theory>();
+        CodeTheoryCreator codeTheoryCreator = new CodeTheoryCreator();
+        DefenitionTheoryCreator defenitionTheoryCreator = new DefenitionTheoryCreator();
+        HeaderTheoryCreator headerTheoryCreator = new HeaderTheoryCreator();
+        TextTheoryCreator textTheoryCreator = new TextTheoryCreator();
+
+        for (int i = 0; i < array.length(); ++i) {
+            JSONObject jsonObject = array.getJSONObject(i);
+            Iterator<String> iterStr = jsonObject.keys();
+            while (iterStr.hasNext())
+            {
+                String key = iterStr.next();
+
+                MainTheory tmp = new MainTheory(key, jsonObject.getString(key));
+                results.add(tmp);
+            }
+        }
+        return results;
+    }*/
 
     public ArrayList<MainTheory> jsonArrayToStringArray(String nameArray) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
         ArrayList<MainTheory> results = new ArrayList<MainTheory>();
+
         for (int i = 0; i < array.length(); ++i) {
             JSONObject jsonObject = array.getJSONObject(i);
             Iterator<String> iterStr = jsonObject.keys();
