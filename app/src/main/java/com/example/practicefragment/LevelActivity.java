@@ -4,7 +4,6 @@ import static com.example.practicefragment.utility.ContentReaderJson.getReaderJs
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,13 +13,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.practicefragment.adapters.LevelsAdapter;
-import com.example.practicefragment.adapters.MainTheoryAdapter;
-import com.example.practicefragment.adapters.TheoryContentAdapter;
-import com.example.practicefragment.models.ContentsRecyclerView;
-import com.example.practicefragment.models.LevelEvent;
-import com.example.practicefragment.models.MainTheoryRecyclerView;
-import com.example.practicefragment.models.RecyclerDataModel;
+import com.example.practicefragment.adapters.TheoryAdapter;
+import com.example.practicefragment.models.TheoryRecyclerView;
 import com.example.practicefragment.utility.ContentReaderJson;
 
 import org.json.JSONException;
@@ -40,7 +34,7 @@ public class LevelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level);
+        setContentView(R.layout.activity_theory);
 
         tvNameLevel = findViewById(R.id.nameLevel);
 
@@ -65,53 +59,32 @@ public class LevelActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        initAbout();
-        initMainTheory();
+        init();
 
     }
 
-    private void initAbout()
+    private void init()
     {
-        ContentsRecyclerView recyclerDataModel = new ContentsRecyclerView();
+        TheoryRecyclerView theoryRecyclerView = new TheoryRecyclerView();
         try {
-            String[] namesField = {"name"};
-            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Contents", namesField));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (recyclerDataModel.isEmpty())
-        {
-            Log.e("error-json", String.valueOf(R.string.json_error));
-        }
-
-        TheoryContentAdapter theoryAdapter = new TheoryContentAdapter(recyclerDataModel.getContentData(), this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_contents);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(theoryAdapter);
-    }
-
-    private void initMainTheory()
-    {
-        MainTheoryRecyclerView recyclerDataModel = new MainTheoryRecyclerView();
-        try {
-            recyclerDataModel.setListData(getReaderJson().jsonArrayToStringArray("Theory"));
+            theoryRecyclerView.setListData(getReaderJson().arrayTheoryByString("Theory"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        if (recyclerDataModel.isEmpty())
+        if (theoryRecyclerView.isEmpty())
         {
             Log.e("error-json", String.valueOf(R.string.json_error));
         }
 
-        MainTheoryAdapter theoryAdapter = new MainTheoryAdapter(recyclerDataModel.getTheories(), this);
+        TheoryAdapter theoryAdapter = new TheoryAdapter(theoryRecyclerView.getTheories(), this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_theory);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(theoryAdapter);
     }
+
+
 
 }

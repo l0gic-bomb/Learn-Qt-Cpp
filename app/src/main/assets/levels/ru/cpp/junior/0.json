@@ -1,21 +1,15 @@
 {
-	"Contents" : [
-		{
-			"name" : "Общие сведения о языке"
-		},
-		{
-			"name" : "История языка"
-		},
-		{
-			"name" : "Достоинства и недостатки языка"
-		}
-	],
 	"Theory" : [
+		{
+			"header_0" :"Общие сведения о языке",
+			"header_1" :"История языка",
+			"header_2" :"Достоинства и недостатки языка"
+		},
 		{
 			"text_0" : "text text texttexttexttexttexttextt exttexttexttexttexttexttexttexttexttext",
 			"code_0" : "std::cout << hello, world << std::endl; ",
 			"definition_0" : "texttext",
-			"text_1" : "Hello"
+			"text_1" : "Hello123"
 		},
 		{
 			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",

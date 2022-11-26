@@ -1,44 +1,45 @@
 package com.example.practicefragment.adapters;
 
-import static com.example.practicefragment.models.MainTheory.TYPE_TEXT;
-import static com.example.practicefragment.models.MainTheory.TYPE_DEF;
-import static com.example.practicefragment.models.MainTheory.TYPE_CODE;
+
+import static com.example.practicefragment.models.theory.Theory.TYPE_HEADER;
+import static com.example.practicefragment.models.theory.Theory.TYPE_TEXT;
+import static com.example.practicefragment.models.theory.Theory.TYPE_DEF;
+import static com.example.practicefragment.models.theory.Theory.TYPE_CODE;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.practicefragment.LevelActivity;
 import com.example.practicefragment.R;
-import com.example.practicefragment.models.LevelEvent;
-import com.example.practicefragment.models.MainTheory;
-import com.example.practicefragment.models.MainTheoryRecyclerView;
+import com.example.practicefragment.models.theory.Theory;
 
 import java.util.List;
 
-public class MainTheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    List<MainTheory> theories;
+public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    List<Theory> theories;
     Context context;
 
-    public MainTheoryAdapter(List<MainTheory> theories, Context ct) {
+    public TheoryAdapter(List<Theory> theories, Context ct) {
         this.theories = theories;
         this.context = ct;
     }
 
+    @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
+            case TYPE_HEADER:
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_content, parent, false);
+                return new LevelsAdapter.EventViewHolder(view);
             case TYPE_TEXT:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_text, parent, false);
-                return new MainTheoryAdapter.TextViewHolder(view);
+                return new TheoryAdapter.TextViewHolder(view);
             case TYPE_DEF:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_definition, parent, false);
                 return new LevelsAdapter.EventViewHolder(view);
@@ -51,18 +52,12 @@ public class MainTheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MainTheory theory = theories.get(position);
+        Theory theory = theories.get(position);
         if (theory != null) {
-            switch (theory.getType()) {
+            switch (theory.getTypeTheory()) {
                 case text:
-                    ((TextViewHolder) holder).text.setText(theory.getTextTheory());
+                    ((TheoryAdapter.TextViewHolder) holder).text.setText(theory.getTheory());
                     break;
-                /*case code:
-                    ((CodeViewHolder) holder).codeView.setText(theory.getTextTheory());
-                    break;
-                case definition:
-                    // TODO
-                    break;*/
             }
         }
     }
@@ -77,14 +72,13 @@ public class MainTheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public int getItemViewType(int position) {
         if (theories != null) {
-            MainTheory object = theories.get(position);
-            if (object != null) {
-                return object.getType().ordinal();
+            Theory theory = theories.get(position);
+            if (theory != null) {
+                return theory.getTypeTheory().ordinal();
             }
         }
         return 0;
     }
-
 
     // holders levelActivtiy
     // class for text
@@ -120,4 +114,13 @@ public class MainTheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
+    // class for code
+    public static class HeaderViewHolder extends RecyclerView.ViewHolder {
+        private final TextView headerView;
+
+        public HeaderViewHolder(View itemView) {
+            super(itemView);
+            headerView = (TextView) itemView.findViewById(R.id.contentTextView);
+        }
+    }
 }

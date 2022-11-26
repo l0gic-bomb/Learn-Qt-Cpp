@@ -10,16 +10,20 @@
 			"name" : "Достоинства и недостатки языка"
 		}
 	],
-	"Structure_theory" : [
+	"Theory" : [
 		{
-			"name" : "Общие сведения о языке",
-			"text" : "",
-			"defenition" : "",
-			"text" : ""
+			"text_0" : "text text texttexttexttexttexttextt exttexttexttexttexttexttexttexttexttext",
+			"code_0" : "std::cout << hello, world << std::endl; ",
+			"definition_0" : "texttext",
+			"text_1" : "Hello123"
 		},
 		{
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"definition" : "texttext"
 		},
 		{
+			"text" : "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+			"definition" : "texttext"
 		}
 	]
 }

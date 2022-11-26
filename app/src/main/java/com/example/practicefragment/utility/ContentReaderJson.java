@@ -2,16 +2,14 @@ package com.example.practicefragment.utility;
 
 import android.content.Context;
 
-import androidx.core.util.Pair;
-
 import com.example.practicefragment.models.LevelEvent;
-import com.example.practicefragment.models.MainTheory;
 import com.example.practicefragment.models.RecyclerDataModel;
 import com.example.practicefragment.models.theory.CodeTheoryCreator;
 import com.example.practicefragment.models.theory.DefenitionTheoryCreator;
 import com.example.practicefragment.models.theory.HeaderTheoryCreator;
 import com.example.practicefragment.models.theory.TextTheoryCreator;
 import com.example.practicefragment.models.theory.Theory;
+import com.example.practicefragment.models.theory.TheoryCreator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,9 +18,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 public class ContentReaderJson {
 
@@ -160,20 +156,11 @@ public class ContentReaderJson {
         return result;
     }
 
-    public String[] jsonArrayToStringArray(String nameArray, String[] namesField) throws JSONException {
-        JSONArray array = object.getJSONArray(nameArray);
-        String[] results = new String[array.length()];
-        for (int i = 0; i < array.length(); ++i) {
-            for (int j = 0; j < namesField.length; ++j) {
-                results[i] = array.getJSONObject(i).getString(namesField[j]);
-            }
-        }
-        return results;
-    }
 
-    /*public ArrayList<Theory> arrayTheoryByString(String nameArray) throws JSONException {
+    public ArrayList<Theory> arrayTheoryByString(String nameArray) throws JSONException {
         JSONArray array = object.getJSONArray(nameArray);
         ArrayList<Theory> results = new ArrayList<Theory>();
+
         CodeTheoryCreator codeTheoryCreator = new CodeTheoryCreator();
         DefenitionTheoryCreator defenitionTheoryCreator = new DefenitionTheoryCreator();
         HeaderTheoryCreator headerTheoryCreator = new HeaderTheoryCreator();
@@ -185,26 +172,17 @@ public class ContentReaderJson {
             while (iterStr.hasNext())
             {
                 String key = iterStr.next();
-
-                MainTheory tmp = new MainTheory(key, jsonObject.getString(key));
-                results.add(tmp);
-            }
-        }
-        return results;
-    }*/
-
-    public ArrayList<MainTheory> jsonArrayToStringArray(String nameArray) throws JSONException {
-        JSONArray array = object.getJSONArray(nameArray);
-        ArrayList<MainTheory> results = new ArrayList<MainTheory>();
-
-        for (int i = 0; i < array.length(); ++i) {
-            JSONObject jsonObject = array.getJSONObject(i);
-            Iterator<String> iterStr = jsonObject.keys();
-            while (iterStr.hasNext())
-            {
-                String key = iterStr.next();
-                MainTheory tmp = new MainTheory(key, jsonObject.getString(key));
-                results.add(tmp);
+                Theory.typeTheory type = TheoryCreator.defineTypeTheory(key);
+                Theory theory;
+                if (type == Theory.typeTheory.code)
+                    theory = codeTheoryCreator.createTheory(jsonObject.getString(key), type.toString());
+                else if (type == Theory.typeTheory.header)
+                    theory = headerTheoryCreator.createTheory(jsonObject.getString(key), type.toString());
+                else if (type == Theory.typeTheory.text)
+                    theory = textTheoryCreator.createTheory(jsonObject.getString(key), type.toString());
+                else
+                    theory = defenitionTheoryCreator.createTheory(jsonObject.getString(key), type.toString());
+                results.add(theory);
             }
         }
         return results;
@@ -213,4 +191,5 @@ public class ContentReaderJson {
     public RecyclerDataModel.typeModel getTypeModel() {
         return typeModel;
     }
+
 }

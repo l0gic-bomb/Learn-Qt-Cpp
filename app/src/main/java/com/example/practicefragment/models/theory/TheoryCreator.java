@@ -1,7 +1,5 @@
 package com.example.practicefragment.models.theory;
 
-import com.example.practicefragment.models.MainTheory;
-
 public abstract class TheoryCreator {
 
     public abstract Theory createTheory(String text, String type);

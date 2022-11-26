@@ -27,16 +27,9 @@
                 android:text="Here will be header"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="32sp" />
+                android:textSize="32sp"
+                android:gravity="center_horizontal" />
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_contents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0"
-                tools:listitem="@android:layout/simple_list_item_1" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_theory"
@@ -45,6 +38,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="0"
                 tools:listitem="@android:layout/simple_list_item_1" />
+
 
             <Button
                 android:layout_width="match_parent"
