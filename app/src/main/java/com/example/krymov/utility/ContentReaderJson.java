@@ -43,7 +43,6 @@ public class ContentReaderJson {
 
         setTypeModel(path);
 
-        object = null;
         InputStream is = null;
         try {
             String json;

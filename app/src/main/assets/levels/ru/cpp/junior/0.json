@@ -6,9 +6,9 @@
 			"header_2" :"Достоинства и недостатки языка"
 		},
 		{
-			"text_0" : "text text texttexttexttexttexttextt exttexttexttexttexttexttexttexttexttext",
+			"text_0" : "По умолчанию в языке С/С++ нет встроенных средств для ввода/вывода на консоль. Средства для ввода/вывода преставляются библиотеками _iostream.h_ для С++, и библиотекой _stdio.h_ для С.",
 			"code_0" : "std::cout << hello, world << std::endl; ",
-			"definition_0" : "texttext",
+			"definition_0" : "Библиотека iostream содержит два типа: _istream_ и _ostream_, для потока ввода и потока вывода соответствено.",
 			"text_1" : "Hello123"
 		},
 		{

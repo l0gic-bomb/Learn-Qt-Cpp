@@ -42,7 +42,7 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 return new TheoryAdapter.TextViewHolder(view);
             case TYPE_DEF:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_definition, parent, false);
-                return new LevelsAdapter.EventViewHolder(view);
+                return new TheoryAdapter.DefinitionViewHolder(view);
             case TYPE_CODE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_code, parent, false);
                 return new LevelsAdapter.EventViewHolder(view);
@@ -61,6 +61,10 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 case header:
                     ((TheoryAdapter.HeaderViewHolder) holder).headerView.setText(theory.getTheory());
                     break;
+                case definition:
+                    ((TheoryAdapter.DefinitionViewHolder) holder).definition.setText(theory.getTheory());
+                    break;
+
             }
         }
     }
@@ -103,6 +107,7 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             definition = (TextView) itemView.findViewById(R.id.defTextView);
             addBtnDef = (TextView) itemView.findViewById(R.id.addDefButton);
+            addBtnDef.setText("Добавить определение в словарь");
         }
 
     }
