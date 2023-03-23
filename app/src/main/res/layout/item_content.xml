@@ -11,6 +11,6 @@
         android:id="@+id/contentTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#3e4b66"/>
+        android:textSize="22dp"
+        android:textColor="@color/foneButtonTheory"/>
 </LinearLayout>

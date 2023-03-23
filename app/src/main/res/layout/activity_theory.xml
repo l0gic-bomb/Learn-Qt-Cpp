@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/foneTheory"
     android:orientation="vertical">
 
     <ScrollView
@@ -19,15 +20,21 @@
                 android:id="@+id/nameLevel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+
                 android:fontFamily="@font"
                 android:text="Here will be header"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
+                android:textColor="@color/foneButtonTheory"
                 android:textSize="36sp"
                 android:gravity="center_horizontal" />
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/foneButtonTheory"
+                android:layout_height="4dp"
+                android:background="?android:attr/listDivider" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -39,11 +46,15 @@
                 tools:listitem="@android:layout/simple_list_item_1" />
 
 
+
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Here will be text"
                 />
+
+
 
 
         </LinearLayout>

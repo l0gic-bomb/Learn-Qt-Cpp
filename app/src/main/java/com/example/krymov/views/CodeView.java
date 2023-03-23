@@ -274,7 +274,7 @@ public class CodeView extends WebView {
         sb.append("td.destacado span {background: #ffda11; color: #000;}");
         sb.append("</style>");
         //scripts
-        sb.append("<script src='file:///android_asset/highlight.js'></script>");
+        sb.append("<script src='file:////android_asset/highlight.js'></script>");
         sb.append("<script>hljs.initHighlightingOnLoad();</script>");
         sb.append("</head>");
         //code

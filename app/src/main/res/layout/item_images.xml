@@ -4,8 +4,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:paddingTop="4dp"
     android:paddingLeft="32dp"
-    android:paddingBottom="12dp">
+    android:paddingBottom="4dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
@@ -29,6 +30,8 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
+            android:text="Операции ввода и вывода"
             android:textSize="24sp" />
 
         <TextView
@@ -39,6 +42,8 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
+            android:text="Ввод и вывод информации в консоль"
             android:textSize="18sp" />
 
     </LinearLayout>

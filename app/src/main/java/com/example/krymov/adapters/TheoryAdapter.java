@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.krymov.R;
 import com.example.krymov.models.theory.Theory;
+import com.example.krymov.views.CodeView;
+import com.example.krymov.views.Language;
+import com.example.krymov.views.Theme;
 
 import java.util.List;
 
@@ -45,7 +48,7 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 return new TheoryAdapter.DefinitionViewHolder(view);
             case TYPE_CODE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_code, parent, false);
-                return new LevelsAdapter.EventViewHolder(view);
+                return new TheoryAdapter.CodeViewHolder(view, context);
         }
         return null;
     }
@@ -64,7 +67,10 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 case definition:
                     ((TheoryAdapter.DefinitionViewHolder) holder).definition.setText(theory.getTheory());
                     break;
-
+                case code :
+                    ((TheoryAdapter.CodeViewHolder) holder).codeView.setCode((theory.getTheory()));
+                    ((TheoryAdapter.CodeViewHolder) holder).initCode();
+                    break;
             }
         }
     }
@@ -107,6 +113,7 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             definition = (TextView) itemView.findViewById(R.id.defTextView);
             addBtnDef = (TextView) itemView.findViewById(R.id.addDefButton);
+            // TODO нужно смотреть добавлено ли определение уже в словарь
             addBtnDef.setText("Добавить определение в словарь");
         }
 
@@ -114,11 +121,32 @@ public class TheoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     // class for code
     public static class CodeViewHolder extends RecyclerView.ViewHolder {
-        private final TextView codeView;
+        private final CodeView codeView;
 
-        public CodeViewHolder(View itemView) {
+        final String CPP_CODE = "#include<iostream>;\n" +
+                "\n" +
+                "int main()\n" +
+                "{\n" +
+                "   cout << \"hello world!\" << std::endl; \n" +
+                "   return 0;\n" +
+                "}\n";
+        public CodeViewHolder(View itemView, Context ct) {
             super(itemView);
-            codeView = (TextView) itemView.findViewById(R.id.codeTextView);
+            codeView = itemView.findViewById(R.id.code_view);
+            codeView.setOnHighlightListener((CodeView.OnHighlightListener) ct)
+                    .setOnHighlightListener((CodeView.OnHighlightListener)ct);
+        }
+
+        public void initCode()
+        {
+            codeView.setTheme(Theme.SOLARIZED_LIGHT)
+                    .setLanguage(Language.CPP)
+                    .setWrapLine(true)
+                    .setFontSize(14)
+                    .setZoomEnabled(true)
+                    .setShowLineNumber(true)
+                    .setStartLineNumber(1)
+                    .apply();
         }
     }
 

@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingLeft="32dp"
-    android:paddingBottom="12dp">
+    android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/codeTextView"
+    <com.example.krymov.views.CodeView
+        android:id="@+id/code_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text = "Some Text"/>
+        android:layout_weight="0"
+        app:cv_font_size="14"
+        app:cv_highlight_line_number="36"
+        app:cv_show_line_number="true"
+        app:cv_start_line_number="1"
+        app:cv_wrap_line="true"
+        app:cv_zoom_enable="true"/>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.krymov;
 
 import static com.example.krymov.utility.ContentReaderJson.getReaderJson;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -16,11 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.krymov.adapters.TheoryAdapter;
 import com.example.krymov.models.TheoryRecyclerView;
 import com.example.krymov.utility.ContentReaderJson;
+import com.example.krymov.views.CodeView;
+import com.example.krymov.views.Language;
 
 import org.json.JSONException;
 
-public class LevelActivity extends AppCompatActivity {
+public class LevelActivity extends AppCompatActivity implements CodeView.OnHighlightListener {
 
+    private ProgressDialog progressDialog;
     TextView tvNameLevel;
 
     String currentLevel;
@@ -35,6 +39,7 @@ public class LevelActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theory);
+
 
         tvNameLevel = findViewById(R.id.nameLevel);
 
@@ -54,13 +59,13 @@ public class LevelActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, R.string.no_level_data, Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         init();
-
     }
 
     private void init()
@@ -86,5 +91,30 @@ public class LevelActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onStartCodeHighlight() {
+        progressDialog = ProgressDialog.show(this, null, "message", true);
+    }
 
+    @Override
+    public void onFinishCodeHighlight() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onLanguageDetected(Language language, int relevance) {
+
+    }
+
+    @Override
+    public void onFontSizeChanged(int sizeInPx) {
+
+    }
+
+    @Override
+    public void onLineClicked(int lineNumber, String content) {
+
+    }
 }

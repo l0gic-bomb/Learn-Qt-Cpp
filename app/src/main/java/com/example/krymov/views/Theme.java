@@ -88,8 +88,6 @@ public class Theme {
     }
 
     public String getPath() {
-
-        return "file:////android_asset/styles/" + getName() + ".css";
-
+        return "file://///android_asset/styles/" + getName() + ".css";
     }
 }
